@@ -6,9 +6,8 @@
     <title>MOONY | Меню киоска</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Основные цвета из вашего дизайна */
         :root {
-            --lavender-primary: #B1B1E8; /* Точный матовый лавандовый */
+            --lavender-primary: #B1B1E8;
             --lavender-light: #D4D4F3;
             --lavender-dark: #8A8AD6;
             --lavender-bg: #F8F8FF;
@@ -34,11 +33,9 @@
             padding: 20px;
             max-width: 900px;
             margin: 0 auto;
-            /* Плавная прокрутка для всего сайта */
             scroll-behavior: smooth;
         }
         
-        /* Прогресс бар - ТЕПЕРЬ ИНДИКАТОР СКРОЛЛА ПО СТРАНИЦЕ */
         .progress-container {
             width: 100%;
             height: 4px;
@@ -52,11 +49,10 @@
         .progress-bar {
             height: 100%;
             background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
-            width: 0%; /* Начинаем с 0% */
-            transition: width 0.1s ease; /* Быстрая анимация */
+            width: 0%;
+            transition: width 0.1s ease;
         }
         
-        /* Шапка в стиле вашего дизайна */
         .header {
             text-align: center;
             padding: 40px 20px;
@@ -88,21 +84,30 @@
             letter-spacing: 1px;
         }
         
-        /* Липкая навигация */
+        /* ЛИПКАЯ НАВИГАЦИЯ - ТЕПЕРЬ СКРЫВАЕТСЯ ПРИ СКРОЛЛЕ */
         .menu-nav-container {
             position: sticky;
-            top: 20px;
+            top: 0;
             z-index: 1000;
             margin-bottom: 30px;
+            transition: transform 0.3s ease;
         }
         
-        /* Возвращаем старый дизайн навигации */
+        .menu-nav-container.hidden {
+            transform: translateY(-100%);
+        }
+        
         .menu-nav {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin: 30px 0;
             flex-wrap: wrap;
+            background: var(--white);
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid var(--lavender-light);
+            box-shadow: 0 5px 20px rgba(177, 177, 232, 0.15);
         }
         
         .menu-nav button {
@@ -119,6 +124,9 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex: 1;
+            min-width: 140px;
+            justify-content: center;
         }
         
         .menu-nav button:hover {
@@ -134,7 +142,6 @@
             box-shadow: 0 4px 12px rgba(177, 177, 232, 0.25);
         }
         
-        /* Микроанимация для кнопок */
         @keyframes microBounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-2px); }
@@ -185,23 +192,24 @@
             background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
         }
         
-        /* Карточки продуктов */
+        /* Карточки продуктов - ОПТИМИЗИРОВАНО ДЛЯ МОБИЛЬНЫХ */
         .products-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
         
         .product-card {
             background: var(--lavender-bg);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             transition: all 0.3s ease;
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            min-height: 200px;
         }
         
         .product-card:hover {
@@ -210,28 +218,13 @@
             box-shadow: 0 10px 25px rgba(177, 177, 232, 0.2);
         }
         
-        .product-card.featured {
-            border: 2px solid var(--lavender-primary);
-            background: linear-gradient(135deg, #FCFAFF 0%, #F8F6FF 100%);
-        }
-        
         .product-name {
             font-family: 'Lora', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        
-        .product-price {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--lavender-primary);
-            white-space: nowrap;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
         
         .product-desc {
@@ -260,7 +253,7 @@
             border-radius: 15px;
         }
         
-        /* Секретный вкус блок в карточке - ИНТЕРАКТИВНЫЙ */
+        /* Секретный вкус */
         .secret-flavor-card {
             background: linear-gradient(135deg, var(--lavender-light) 0%, var(--lavender-primary) 100%);
             color: white;
@@ -319,7 +312,6 @@
             transform: scale(1.05);
         }
         
-        /* Подсказка для секретного вкуса */
         .secret-tooltip {
             position: absolute;
             top: 50%;
@@ -352,7 +344,6 @@
             font-style: italic;
         }
         
-        /* Анимация пульсации для привлечения внимания */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.02); }
@@ -372,7 +363,7 @@
         .loyalty-card {
             background: var(--white);
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             margin-bottom: 25px;
             border-left: 4px solid var(--lavender-primary);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -381,56 +372,33 @@
             overflow: hidden;
         }
         
-        /* Ховер-эффекты для карточек лояльности */
         .loyalty-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(177, 177, 232, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(177, 177, 232, 0.2);
             border-left: 4px solid var(--lavender-dark);
-        }
-        
-        .loyalty-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(177, 177, 232, 0.05) 0%, rgba(138, 138, 214, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .loyalty-card:hover::after {
-            opacity: 1;
         }
         
         .loyalty-title {
             font-family: 'Lora', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--lavender-dark);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
-            position: relative;
-            z-index: 2;
         }
         
         .loyalty-price {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--lavender-primary);
             margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
         }
         
         .loyalty-desc {
             color: var(--text-light);
             font-size: 1rem;
             line-height: 1.6;
-            position: relative;
-            z-index: 2;
         }
         
         .loyalty-highlight {
@@ -441,16 +409,10 @@
             margin-top: 15px;
             font-size: 0.95rem;
             position: relative;
-            z-index: 2;
             transition: all 0.3s ease;
         }
         
-        .loyalty-card:hover .loyalty-highlight {
-            background: rgba(255, 215, 0, 0.15);
-            border-color: var(--accent-gold-dark);
-        }
-        
-        /* Акцент на "Золотой билет" (БЕЗ эмодзи 🎫) */
+        /* ЗОЛОТОЙ БИЛЕТ - НОВЫЙ ЭФФЕКТ БЛЕСКА (без странных шариков) */
         .golden-ticket-highlight {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 165, 0, 0.15) 100%) !important;
             border: 2px solid var(--accent-gold) !important;
@@ -458,23 +420,37 @@
             overflow: hidden;
         }
         
+        .golden-ticket-highlight::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 20%,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent 80%
+            );
+            transform: rotate(30deg);
+            animation: goldenShine 3s infinite linear;
+        }
+        
+        @keyframes goldenShine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+        }
+        
         .golden-ticket-highlight strong {
             color: #8B4513;
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
         }
         
-        .golden-ticket-sparkle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: sparkle 2s infinite;
-        }
-        
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
+        .loyalty-card:hover .loyalty-highlight {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--accent-gold-dark);
         }
         
         /* Кнопка "Наверх" */
@@ -513,7 +489,7 @@
             box-shadow: 0 8px 20px rgba(177, 177, 232, 0.6);
         }
         
-        /* Информация о бренде - ОБНОВЛЕННЫЕ СТИЛИ (белая как первые две) */
+        /* Информация о бренде */
         .info-section {
             background: var(--white);
             border-radius: 16px;
@@ -585,18 +561,9 @@
             color: var(--text-dark);
         }
         
-        .moony-name {
-            font-family: 'Lora', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--lavender-dark);
-            margin-top: 15px;
-            margin-bottom: 10px;
-        }
-        
         .contact-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
             flex-wrap: wrap;
         }
@@ -659,7 +626,7 @@
         .contacts {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             margin: 20px 0;
             flex-wrap: wrap;
         }
@@ -702,49 +669,94 @@
             }
         }
         
-        /* Адаптивность */
+        /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ - УЛУЧШЕННАЯ */
         @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 30px 15px;
+                margin-bottom: 20px;
+            }
+            
             .brand-name {
-                font-size: 3.5rem;
+                font-size: 3rem;
+                letter-spacing: 2px;
             }
             
             .subtitle {
                 font-size: 1.2rem;
             }
             
-            .products-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .menu-section {
-                padding: 25px;
-            }
-            
-            .menu-nav-container {
-                top: 10px;
-            }
-            
             .menu-nav {
+                margin: 20px 0;
+                padding: 12px;
                 gap: 10px;
             }
             
             .menu-nav button {
-                padding: 12px 20px;
+                padding: 12px 15px;
                 font-size: 0.9rem;
+                min-width: 100px;
             }
             
-            .contacts {
-                flex-direction: column;
+            .menu-section {
+                padding: 25px 20px;
+                margin-bottom: 20px;
+            }
+            
+            .section-title, .info-title {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            
+            .products-container {
+                grid-template-columns: 1fr;
                 gap: 15px;
             }
             
-            .info-title {
-                font-size: 1.8rem;
+            .product-card {
+                padding: 18px;
+                min-height: auto;
+            }
+            
+            .product-name {
+                font-size: 1.3rem;
+            }
+            
+            .product-desc {
+                font-size: 0.9rem;
+            }
+            
+            .loyalty-card {
+                padding: 20px;
+            }
+            
+            .loyalty-title {
+                font-size: 1.4rem;
+            }
+            
+            .loyalty-price {
+                font-size: 1.2rem;
+            }
+            
+            .info-box {
+                padding: 20px;
+            }
+            
+            .info-box-title {
+                font-size: 1.3rem;
             }
             
             .contact-links {
                 flex-direction: column;
                 gap: 10px;
+            }
+            
+            .contacts {
+                flex-direction: column;
+                gap: 15px;
             }
             
             .secret-tooltip {
@@ -766,19 +778,49 @@
             .product-card:hover {
                 transform: none;
             }
+            .loyalty-card:hover {
+                transform: none;
+            }
+            .golden-ticket-highlight::before {
+                animation: none;
+            }
         }
         
         @media (max-width: 480px) {
             .brand-name {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .menu-nav {
+                flex-direction: column;
+            }
+            
+            .menu-nav button {
+                width: 100%;
             }
             
             .section-title, .info-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .menu-section {
                 padding: 20px 15px;
+            }
+            
+            .product-name {
+                font-size: 1.2rem;
+            }
+            
+            .loyalty-title {
+                font-size: 1.3rem;
+            }
+            
+            .info-box-title {
+                font-size: 1.2rem;
             }
             
             .scroll-top-btn {
@@ -789,38 +831,47 @@
                 font-size: 1.2rem;
             }
         }
+        
+        @media (max-width: 360px) {
+            .brand-name {
+                font-size: 2.2rem;
+            }
+            
+            .header {
+                padding: 25px 10px;
+            }
+            
+            .menu-nav button {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Прогресс бар - ТЕПЕРЬ ИНДИКАТОР СКРОЛЛА ПО СТРАНИЦЕ -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
     
-    <!-- Кнопка "Наверх" -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Вернуться наверх">↑</button>
     
-    <!-- Шапка бренда -->
     <header class="header">
         <h1 class="brand-name">MOONY</h1>
         <div class="subtitle">NEW YORK STYLE COOKIES</div>
     </header>
     
-    <!-- Липкая навигация (старый дизайн) -->
-    <div class="menu-nav-container">
+    <div class="menu-nav-container" id="menuNavContainer">
         <nav class="menu-nav" id="stickyNav">
-            <button class="active" onclick="showSection('cookies', 33.33)"><span>🍪</span> Печенье</button>
-            <button onclick="showSection('loyalty', 66.66)"><span>🎁</span> Система лояльности</button>
-            <button onclick="showSection('info', 100)"><span>ℹ️</span> О MOONY</button>
+            <button class="active" onclick="showSection('cookies')"><span>🍪</span> Печенье</button>
+            <button onclick="showSection('loyalty')"><span>🎁</span> Система лояльности</button>
+            <button onclick="showSection('info')"><span>ℹ️</span> О MOONY</button>
         </nav>
     </div>
     
-    <!-- Секция печенья -->
     <section id="cookies" class="menu-section active">
         <h2 class="section-title">13 вкусов New York Style печенья</h2>
         
         <div class="products-container">
-            <!-- Red Velvet -->
             <div class="product-card">
                 <h3 class="product-name">Red Velvet</h3>
                 <p class="product-desc">Кремчиз, белый шоколад и балдежное нежное тесто.</p>
@@ -830,7 +881,6 @@
                 </div>
             </div>
             
-            <!-- Kinder -->
             <div class="product-card">
                 <h3 class="product-name">Kinder</h3>
                 <p class="product-desc">Нежное тесто с молочным и белым шоколадом, начинка из шоколадки Kinder.</p>
@@ -840,7 +890,6 @@
                 </div>
             </div>
             
-            <!-- New York Style -->
             <div class="product-card">
                 <h3 class="product-name">New York Style</h3>
                 <p class="product-desc">Классика, с которой всё началось! Вдохновлено знаменитыми Levain cookies. Пышное тесто, запечённый ароматный фундук и тёмный шоколад.</p>
@@ -850,7 +899,6 @@
                 </div>
             </div>
             
-            <!-- Nutella -->
             <div class="product-card">
                 <h3 class="product-name">Nutella</h3>
                 <p class="product-desc">Тесто с нотками ванили, молочный шоколад и печенье, полное начинки из оригинальной пасты Nutella.</p>
@@ -860,7 +908,6 @@
                 </div>
             </div>
             
-            <!-- Classic Chocolate Chip -->
             <div class="product-card">
                 <h3 class="product-name">Classic Chocolate Chip</h3>
                 <p class="product-desc">Классическое ароматное американское печенье с нежнейшим тестом и каплями молочного шоколада.</p>
@@ -870,7 +917,6 @@
                 </div>
             </div>
             
-            <!-- Bounty -->
             <div class="product-card">
                 <h3 class="product-name">Bounty</h3>
                 <p class="product-desc">Ароматный хрустящий кокос, молочные капли и сердцевина из молочного шоколада.</p>
@@ -880,7 +926,6 @@
                 </div>
             </div>
             
-            <!-- Dubai Chocolate -->
             <div class="product-card">
                 <h3 class="product-name">Dubai Chocolate</h3>
                 <p class="product-desc">Хрустящее обжаренное тесто катаифи, фисташковая паста в дуэте с капелькой тахини. Известный на весь мир вкус начинки Дубайского шоколада — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
@@ -890,7 +935,6 @@
                 </div>
             </div>
             
-            <!-- Nutella Chocolate -->
             <div class="product-card">
                 <h3 class="product-name">Nutella Chocolate</h3>
                 <p class="product-desc">Наше фирменное балдежное тесто с мягким вкусом шоколада, рубленый ароматный запечённый фундук и молочный шоколад. Ах да, для тех, кому не хватило — растекающаяся сердцевина из пасты Nutella.</p>
@@ -900,7 +944,6 @@
                 </div>
             </div>
             
-            <!-- Cookies and Cream -->
             <div class="product-card">
                 <h3 class="product-name">Cookies and Cream</h3>
                 <p class="product-desc">База из мягкого теста Oreo нежно хрустит, обнажая щедрое количество белого шоколада, соседствующего с кусочками печенья Oreo. А внутри — молочная сердцевина.</p>
@@ -910,7 +953,6 @@
                 </div>
             </div>
             
-            <!-- Oreo -->
             <div class="product-card">
                 <h3 class="product-name">Oreo</h3>
                 <p class="product-desc">Если бы Oreo было большим и нежным печеньем. Точь-в-точь повторяем вкус, только в мягком большом формате. Яркое чёрное какао, молочный шоколад.</p>
@@ -920,7 +962,6 @@
                 </div>
             </div>
             
-            <!-- Peanut Butter -->
             <div class="product-card">
                 <h3 class="product-name">Peanut Butter</h3>
                 <p class="product-desc">Терпкая ароматная арахисовая паста в сочетании со сладким и нежнейшим белым и молочным шоколадом, и, конечно же, обжаренный арахис.</p>
@@ -930,7 +971,6 @@
                 </div>
             </div>
             
-            <!-- Chocolate Chip Oats -->
             <div class="product-card">
                 <h3 class="product-name">Chocolate Chip Oats</h3>
                 <p class="product-desc">Текстура! Текстура! Текстура! Хрустим и балдеем. Цельнозерновые овсяные хлопья, запечённый ароматный миндаль и тягучий молочный шоколад.</p>
@@ -940,7 +980,6 @@
                 </div>
             </div>
             
-            <!-- Секретный вкус - ИНТЕРАКТИВНЫЙ -->
             <div class="product-card secret-flavor-card" onclick="revealSecretHint()">
                 <h3 class="product-name" style="color: white;">Секретный вкус</h3>
                 <p class="product-desc" style="color: rgba(255, 255, 255, 0.9); text-align: center;">Радуем вас и дарим при покупке от 5шт печенья</p>
@@ -948,7 +987,6 @@
                     <span class="secret-price-center">0 ₽</span>
                 </div>
                 
-                <!-- Всплывающая подсказка -->
                 <div class="secret-tooltip">
                     🎁 Секретный подарок!<br>
                     При покупке 5+ печений вы получаете специальный вкус, который меняется каждую неделю!
@@ -958,11 +996,9 @@
         </div>
     </section>
     
-    <!-- Система лояльности -->
     <section id="loyalty" class="menu-section loyalty-section">
         <h2 class="section-title">Система лояльности</h2>
         
-        <!-- Собери свой район -->
         <div class="loyalty-card">
             <h3 class="loyalty-title"><span>🏆</span> Собери свой район</h3>
             <div class="loyalty-price">6 штампов = подарок</div>
@@ -972,14 +1008,12 @@
             </div>
         </div>
         
-        <!-- 5+1 -->
         <div class="loyalty-card">
             <h3 class="loyalty-title"><span>✨</span> Акция "5+1"</h3>
             <div class="loyalty-price">от 5шт печенья = +1 в подарок</div>
             <p class="loyalty-desc">Купите от 5шт печенья и получите ещё одно в подарок — секретный вкус, который нельзя купить отдельно!</p>
         </div>
         
-        <!-- Набор "Весь Нью-Йорк" -->
         <div class="loyalty-card">
             <h3 class="loyalty-title"><span>🎁</span> Коллекция MOONY. Полное издание</h3>
             <div class="loyalty-price">12 печений + шанс на "Золотой билет"</div>
@@ -989,7 +1023,6 @@
             </div>
         </div>
         
-        <!-- QR акция -->
         <div class="loyalty-card">
             <h3 class="loyalty-title"><span>📱</span> Выложи в соцсети — выиграй коробку!</h3>
             <div class="loyalty-price">Каждое воскресенье — 2 победителя</div>
@@ -1000,11 +1033,9 @@
         </div>
     </section>
     
-    <!-- Секция информации о бренде - ОБНОВЛЕННАЯ -->
     <section id="info" class="menu-section info-section">
         <h2 class="info-title">О MOONY</h2>
         
-        <!-- Что такое Нью-Йорк Стайл? -->
         <div class="info-box">
             <div class="info-box-header">
                 <div class="info-box-icon">🗽</div>
@@ -1015,7 +1046,6 @@
             </div>
         </div>
         
-        <!-- MOONY философия -->
         <div class="info-box">
             <div class="info-box-header">
                 <div class="info-box-icon">🍪</div>
@@ -1026,7 +1056,6 @@
             </div>
         </div>
         
-        <!-- Привет от создательницы -->
         <div class="info-box">
             <div class="info-box-header">
                 <div class="info-box-icon">❤️</div>
@@ -1051,12 +1080,10 @@
         </div>
     </section>
     
-        <!-- Футер -->
     <footer class="footer">
         <div class="footer-brand">MOONY</div>
         <div class="footer-subtitle">NEW YORK STYLE COOKIES</div>
         
-        <!-- Часы работы -->
         <div class="working-hours">
             🕒 <strong>Часы работы:</strong> Ежедневно с 10:00 до 22:00
         </div>
@@ -1080,7 +1107,7 @@
 
     <script>
         // Функция переключения секций меню
-        function showSection(sectionId, progressPercent) {
+        function showSection(sectionId) {
             // Скрываем все секции
             document.querySelectorAll('.menu-section').forEach(section => {
                 section.classList.remove('active');
@@ -1102,13 +1129,21 @@
                 behavior: 'smooth',
                 block: 'start'
             });
+            
+            // Показываем навигацию после переключения
+            const navContainer = document.getElementById('menuNavContainer');
+            navContainer.classList.remove('hidden');
+            
+            // Через 2 секунды снова скрываем, если пользователь продолжает скроллить
+            clearTimeout(window.navTimeout);
+            window.navTimeout = setTimeout(() => {
+                hideNavOnScroll();
+            }, 2000);
         }
         
-        // Функция обновления прогресс бара - ТЕПЕРЬ ИНДИКАТОР СКРОЛЛА ПО ВСЕЙ СТРАНИЦЕ
+        // Функция обновления прогресс бара
         function updateScrollProgress() {
             const progressBar = document.getElementById('progressBar');
-            
-            // Вычисляем прогресс скролла по всей странице
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = window.scrollY;
             
@@ -1118,7 +1153,7 @@
             }
         }
         
-        // Секретные подсказки для интерактивной карточки (БЕЗ раскрытия вкусов)
+        // Секретные подсказки
         const secretHints = [
             "🎁 Секретный сюрприз ждёт вас!",
             "🎯 Попробуйте угадать наш секретный вкус!",
@@ -1129,24 +1164,18 @@
         
         let hintIndex = 0;
         
-        // Функция для раскрытия подсказки о секретном вкусе
         function revealSecretHint() {
             const secretCard = document.querySelector('.secret-flavor-card');
             const originalText = secretCard.querySelector('.product-desc');
             
-            // Сохраняем оригинальный текст
             const originalContent = originalText.innerHTML;
-            
-            // Показываем подсказку (без раскрытия вкуса)
             originalText.innerHTML = secretHints[hintIndex];
             originalText.style.color = "white";
             originalText.style.fontWeight = "600";
             originalText.style.fontSize = "1rem";
             
-            // Меняем анимацию
             secretCard.style.animation = "pulse 1s infinite";
             
-            // Через 3 секунды возвращаем оригинальный текст
             setTimeout(() => {
                 originalText.innerHTML = originalContent;
                 originalText.style.color = "rgba(255, 255, 255, 0.9)";
@@ -1154,33 +1183,49 @@
                 originalText.style.fontSize = "0.95rem";
                 secretCard.style.animation = "pulse 4s infinite";
                 
-                // Переходим к следующей подсказке
                 hintIndex = (hintIndex + 1) % secretHints.length;
             }, 3000);
         }
         
-        // Функция для создания эффекта искр на Золотом билете
-        function createGoldenTicketSparkles() {
-            const goldenTicket = document.getElementById('goldenTicket');
-            if (!goldenTicket) return;
+        // Управление навигацией при скролле
+        let lastScrollTop = 0;
+        let isNavVisible = true;
+        
+        function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const navContainer = document.getElementById('menuNavContainer');
             
-            // Создаем несколько искр
-            for (let i = 0; i < 5; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'golden-ticket-sparkle';
-                
-                // Случайная позиция
-                const left = Math.random() * 90 + 5;
-                const top = Math.random() * 80 + 10;
-                const delay = Math.random() * 2;
-                const duration = 1 + Math.random() * 2;
-                
-                sparkle.style.left = left + '%';
-                sparkle.style.top = top + '%';
-                sparkle.style.animationDelay = delay + 's';
-                sparkle.style.animationDuration = duration + 's';
-                
-                goldenTicket.appendChild(sparkle);
+            // Показываем/скрываем навигацию
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Скроллим вниз - скрываем
+                if (isNavVisible) {
+                    navContainer.classList.add('hidden');
+                    isNavVisible = false;
+                }
+            } else if (scrollTop < lastScrollTop) {
+                // Скроллим вверх - показываем
+                if (!isNavVisible) {
+                    navContainer.classList.remove('hidden');
+                    isNavVisible = true;
+                }
+            }
+            
+            lastScrollTop = scrollTop;
+            
+            // Показываем/скрываем кнопку "Наверх"
+            toggleScrollTopButton();
+            
+            // Обновляем прогресс бар
+            updateScrollProgress();
+        }
+        
+        function hideNavOnScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const navContainer = document.getElementById('menuNavContainer');
+            
+            if (scrollTop > 100 && isNavVisible) {
+                navContainer.classList.add('hidden');
+                isNavVisible = false;
             }
         }
         
@@ -1201,42 +1246,44 @@
                 top: 0,
                 behavior: 'smooth'
             });
+            
+            // Показываем навигацию при клике на кнопку "Наверх"
+            const navContainer = document.getElementById('menuNavContainer');
+            navContainer.classList.remove('hidden');
+            isNavVisible = true;
         }
         
-        // Инициализация при загрузке
+        // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            // Создаем искры для Золотого билета
-            createGoldenTicketSparkles();
-            
-            // Добавляем обработчик скролла для прогресс-бара (индикатор скролла)
+            // Добавляем обработчики скролла
+            window.addEventListener('scroll', handleScroll);
             window.addEventListener('scroll', updateScrollProgress);
             
-            // Добавляем обработчик скролла для кнопки "Наверх"
-            window.addEventListener('scroll', toggleScrollTopButton);
-            
-            // Инициализируем прогресс-бар
-            updateScrollProgress();
-            
-            // Добавляем обработчик клика для кнопки "Наверх"
+            // Обработчик для кнопки "Наверх"
             document.getElementById('scrollTopBtn').addEventListener('click', scrollToTop);
             
-            // Добавляем возможность переключения секций с клавиатуры
+            // Управление с клавиатуры
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight') {
                     const buttons = document.querySelectorAll('.menu-nav button');
                     const activeIndex = Array.from(buttons).findIndex(btn => btn.classList.contains('active'));
                     const nextIndex = (activeIndex + 1) % buttons.length;
-                    buttons[nextIndex].click();
+                    if (buttons[nextIndex]) {
+                        buttons[nextIndex].click();
+                    }
                 } else if (e.key === 'ArrowLeft') {
                     const buttons = document.querySelectorAll('.menu-nav button');
                     const activeIndex = Array.from(buttons).findIndex(btn => btn.classList.contains('active'));
                     const prevIndex = (activeIndex - 1 + buttons.length) % buttons.length;
-                    buttons[prevIndex].click();
+                    if (buttons[prevIndex]) {
+                        buttons[prevIndex].click();
+                    }
                 }
             });
             
-            // Инициализируем кнопку "Наверх" при загрузке
+            // Инициализация
             toggleScrollTopButton();
+            updateScrollProgress();
         });
     </script>
 </body>
