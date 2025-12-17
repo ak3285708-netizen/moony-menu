@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOONY | Меню киоска</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Основные цвета из вашего дизайна */
+        :root {
+            --lavender-primary: #B1B1E8; /* Точный матовый лавандовый */
+            --lavender-light: #D4D4F3;
+            --lavender-dark: #8A8AD6;
+            --lavender-bg: #F8F8FF;
+            --text-dark: #2D2D3A;
+            --text-light: #6A6A7A;
+            --accent-gold: #FFD700;
+            --accent-gold-dark: #FFA500;
+            --accent-pink: #FFB6C1;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--lavender-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            /* Плавная прокрутка для всего сайта */
+            scroll-behavior: smooth;
+        }
+        
+        /* Прогресс бар - ТЕПЕРЬ ИНДИКАТОР СКРОЛЛА ПО СТРАНИЦЕ */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: var(--lavender-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
+            width: 0%; /* Начинаем с 0% */
+            transition: width 0.1s ease; /* Быстрая анимация */
+        }
+        
+        /* Шапка в стиле вашего дизайна */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--lavender-primary) 0%, var(--lavender-dark) 100%);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--lavender-dark);
+            box-shadow: 0 10px 25px rgba(138, 138, 214, 0.2);
+        }
+        
+        .brand-name {
+            font-family: 'Lora', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            opacity: 0.9;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        /* Липкая навигация */
+        .menu-nav-container {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            margin-bottom: 30px;
+        }
+        
+        /* Возвращаем старый дизайн навигации */
+        .menu-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .menu-nav button {
+            background: transparent;
+            border: 2px solid var(--lavender-primary);
+            color: var(--lavender-primary);
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .menu-nav button:hover {
+            background: var(--lavender-primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(177, 177, 232, 0.3);
+        }
+        
+        .menu-nav button.active {
+            background: var(--lavender-primary);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(177, 177, 232, 0.25);
+        }
+        
+        /* Микроанимация для кнопок */
+        @keyframes microBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+        
+        .menu-nav button:hover {
+            animation: microBounce 0.3s ease;
+        }
+        
+        /* Секции меню */
+        .menu-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 2px solid var(--lavender-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .menu-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            color: var(--lavender-dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--lavender-light);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
+        }
+        
+        /* Карточки продуктов */
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: var(--lavender-bg);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            border-color: var(--lavender-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(177, 177, 232, 0.2);
+        }
+        
+        .product-card.featured {
+            border: 2px solid var(--lavender-primary);
+            background: linear-gradient(135deg, #FCFAFF 0%, #F8F6FF 100%);
+        }
+        
+        .product-name {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .product-price {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--lavender-primary);
+            white-space: nowrap;
+        }
+        
+        .product-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--lavender-light);
+        }
+        
+        .product-weight, .product-price-small {
+            font-size: 0.9rem;
+            color: var(--white);
+            font-weight: 600;
+            background: var(--lavender-primary);
+            padding: 6px 12px;
+            border-radius: 15px;
+        }
+        
+        /* Секретный вкус блок в карточке - ИНТЕРАКТИВНЫЙ */
+        .secret-flavor-card {
+            background: linear-gradient(135deg, var(--lavender-light) 0%, var(--lavender-primary) 100%);
+            color: white;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .secret-flavor-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .secret-flavor-card:hover::before {
+            opacity: 1;
+            animation: shine 1.5s ease;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .secret-flavor-card .product-details {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+            justify-content: center;
+        }
+        
+        .secret-price-center {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 15px;
+            text-align: center;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .secret-flavor-card:hover .secret-price-center {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        /* Подсказка для секретного вкуса */
+        .secret-tooltip {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            width: 80%;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .secret-flavor-card:hover .secret-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .secret-message {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* Анимация пульсации для привлечения внимания */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .secret-flavor-card {
+            animation: pulse 4s infinite;
+        }
+        
+        /* Система лояльности */
+        .loyalty-section {
+            background: linear-gradient(135deg, #F8F6FF 0%, #F0EDFF 100%);
+            border: 2px solid var(--lavender-light);
+        }
+        
+        .loyalty-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--lavender-primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Ховер-эффекты для карточек лояльности */
+        .loyalty-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(177, 177, 232, 0.25);
+            border-left: 4px solid var(--lavender-dark);
+        }
+        
+        .loyalty-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(177, 177, 232, 0.05) 0%, rgba(138, 138, 214, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loyalty-card:hover::after {
+            opacity: 1;
+        }
+        
+        .loyalty-title {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            color: var(--lavender-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .loyalty-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--lavender-primary);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .loyalty-desc {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .loyalty-highlight {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .loyalty-card:hover .loyalty-highlight {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--accent-gold-dark);
+        }
+        
+        /* Акцент на "Золотой билет" (БЕЗ эмодзи 🎫) */
+        .golden-ticket-highlight {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 165, 0, 0.15) 100%) !important;
+            border: 2px solid var(--accent-gold) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .golden-ticket-highlight strong {
+            color: #8B4513;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+        }
+        
+        .golden-ticket-sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Кнопка "Наверх" */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--lavender-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(177, 177, 232, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-top-btn:hover {
+            background: var(--lavender-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(177, 177, 232, 0.6);
+        }
+        
+        /* Информация о бренде - ОБНОВЛЕННЫЕ СТИЛИ (белая как первые две) */
+        .info-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 35px;
+            border: 2px solid var(--lavender-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .info-title {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            color: var(--lavender-dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--lavender-light);
+            position: relative;
+        }
+        
+        .info-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
+        }
+        
+        .info-box {
+            background: var(--lavender-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--lavender-light);
+            transition: all 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(177, 177, 232, 0.15);
+        }
+        
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-box-icon {
+            font-size: 1.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-box:hover .info-box-icon {
+            transform: scale(1.1);
+        }
+        
+        .info-box-title {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--lavender-dark);
+        }
+        
+        .info-box-content {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+        
+        .moony-name {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--lavender-dark);
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link-info {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--lavender-primary);
+            border-radius: 8px;
+            border: 2px solid transparent;
+        }
+        
+        .contact-link-info:hover {
+            background: var(--lavender-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(177, 177, 232, 0.3);
+        }
+        
+        /* Футер */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--lavender-light);
+            margin-top: 40px;
+        }
+        
+        .footer-brand {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--lavender-primary);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-subtitle {
+            color: var(--lavender-dark);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .working-hours {
+            background: rgba(177, 177, 232, 0.1);
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin: 15px auto;
+            display: inline-block;
+            border: 1px solid var(--lavender-light);
+            color: var(--lavender-dark);
+            font-weight: 500;
+        }
+        
+        .contacts {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--lavender-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--lavender-primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Стили для печати */
+        @media print {
+            .progress-container, .menu-nav, .scroll-top-btn {
+                display: none !important;
+            }
+            .menu-section {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                page-break-inside: avoid;
+            }
+            body {
+                padding: 10px !important;
+                background: white !important;
+            }
+            .product-card:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+            .secret-flavor-card {
+                animation: none !important;
+            }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 3.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-section {
+                padding: 25px;
+            }
+            
+            .menu-nav-container {
+                top: 10px;
+            }
+            
+            .menu-nav {
+                gap: 10px;
+            }
+            
+            .menu-nav button {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .contacts {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .info-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .secret-tooltip {
+                display: none;
+            }
+            
+            .scroll-top-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            /* На мобильных упрощаем анимации */
+            .secret-flavor-card {
+                animation: none;
+            }
+            .product-card:hover {
+                transform: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 2.8rem;
+            }
+            
+            .section-title, .info-title {
+                font-size: 1.8rem;
+            }
+            
+            .menu-section {
+                padding: 20px 15px;
+            }
+            
+            .scroll-top-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Прогресс бар - ТЕПЕРЬ ИНДИКАТОР СКРОЛЛА ПО СТРАНИЦЕ -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Кнопка "Наверх" -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Вернуться наверх">↑</button>
+    
+    <!-- Шапка бренда -->
+    <header class="header">
+        <h1 class="brand-name">MOONY</h1>
+        <div class="subtitle">NEW YORK STYLE COOKIES</div>
+    </header>
+    
+    <!-- Липкая навигация (старый дизайн) -->
+    <div class="menu-nav-container">
+        <nav class="menu-nav" id="stickyNav">
+            <button class="active" onclick="showSection('cookies', 33.33)"><span>🍪</span> Печенье</button>
+            <button onclick="showSection('loyalty', 66.66)"><span>🎁</span> Система лояльности</button>
+            <button onclick="showSection('info', 100)"><span>ℹ️</span> О MOONY</button>
+        </nav>
+    </div>
+    
+    <!-- Секция печенья -->
+    <section id="cookies" class="menu-section active">
+        <h2 class="section-title">13 вкусов New York Style печенья</h2>
+        
+        <div class="products-container">
+            <!-- Red Velvet -->
+            <div class="product-card">
+                <h3 class="product-name">Red Velvet</h3>
+                <p class="product-desc">Кремчиз, белый шоколад и балдежное нежное тесто.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Kinder -->
+            <div class="product-card">
+                <h3 class="product-name">Kinder</h3>
+                <p class="product-desc">Нежное тесто с молочным и белым шоколадом, начинка из шоколадки Kinder.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- New York Style -->
+            <div class="product-card">
+                <h3 class="product-name">New York Style</h3>
+                <p class="product-desc">Классика, с которой всё началось! Вдохновлено знаменитыми Levain cookies. Пышное тесто, запечённый ароматный фундук и тёмный шоколад.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Nutella -->
+            <div class="product-card">
+                <h3 class="product-name">Nutella</h3>
+                <p class="product-desc">Тесто с нотками ванили, молочный шоколад и печенье, полное начинки из оригинальной пасты Nutella.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Classic Chocolate Chip -->
+            <div class="product-card">
+                <h3 class="product-name">Classic Chocolate Chip</h3>
+                <p class="product-desc">Классическое ароматное американское печенье с нежнейшим тестом и каплями молочного шоколада.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Bounty -->
+            <div class="product-card">
+                <h3 class="product-name">Bounty</h3>
+                <p class="product-desc">Ароматный хрустящий кокос, молочные капли и сердцевина из молочного шоколада.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Dubai Chocolate -->
+            <div class="product-card">
+                <h3 class="product-name">Dubai Chocolate</h3>
+                <p class="product-desc">Хрустящее обжаренное тесто катаифи, фисташковая паста в дуэте с капелькой тахини. Известный на весь мир вкус начинки Дубайского шоколада — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Nutella Chocolate -->
+            <div class="product-card">
+                <h3 class="product-name">Nutella Chocolate</h3>
+                <p class="product-desc">Наше фирменное балдежное тесто с мягким вкусом шоколада, рубленый ароматный запечённый фундук и молочный шоколад. Ах да, для тех, кому не хватило — растекающаяся сердцевина из пасты Nutella.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Cookies and Cream -->
+            <div class="product-card">
+                <h3 class="product-name">Cookies and Cream</h3>
+                <p class="product-desc">База из мягкого теста Oreo нежно хрустит, обнажая щедрое количество белого шоколада, соседствующего с кусочками печенья Oreo. А внутри — молочная сердцевина.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Oreo -->
+            <div class="product-card">
+                <h3 class="product-name">Oreo</h3>
+                <p class="product-desc">Если бы Oreo было большим и нежным печеньем. Точь-в-точь повторяем вкус, только в мягком большом формате. Яркое чёрное какао, молочный шоколад.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Peanut Butter -->
+            <div class="product-card">
+                <h3 class="product-name">Peanut Butter</h3>
+                <p class="product-desc">Терпкая ароматная арахисовая паста в сочетании со сладким и нежнейшим белым и молочным шоколадом, и, конечно же, обжаренный арахис.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Chocolate Chip Oats -->
+            <div class="product-card">
+                <h3 class="product-name">Chocolate Chip Oats</h3>
+                <p class="product-desc">Текстура! Текстура! Текстура! Хрустим и балдеем. Цельнозерновые овсяные хлопья, запечённый ароматный миндаль и тягучий молочный шоколад.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- Секретный вкус - ИНТЕРАКТИВНЫЙ -->
+            <div class="product-card secret-flavor-card" onclick="revealSecretHint()">
+                <h3 class="product-name" style="color: white;">Секретный вкус</h3>
+                <p class="product-desc" style="color: rgba(255, 255, 255, 0.9); text-align: center;">Радуем вас и дарим при покупке от 5шт печенья</p>
+                <div class="product-details">
+                    <span class="secret-price-center">0 ₽</span>
+                </div>
+                
+                <!-- Всплывающая подсказка -->
+                <div class="secret-tooltip">
+                    🎁 Секретный подарок!<br>
+                    При покупке 5+ печений вы получаете специальный вкус, который меняется каждую неделю!
+                    <div class="secret-message">Нажмите на карточку для получения подсказки о текущем вкусе</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Система лояльности -->
+    <section id="loyalty" class="menu-section loyalty-section">
+        <h2 class="section-title">Система лояльности</h2>
+        
+        <!-- Собери свой район -->
+        <div class="loyalty-card">
+            <h3 class="loyalty-title"><span>🏆</span> Собери свой район</h3>
+            <div class="loyalty-price">6 штампов = подарок</div>
+            <p class="loyalty-desc">При каждой покупке от 300 ₽ получайте штамп на Вашу карту лояльности. Соберите 6 штампов — получите печенье в подарок!</p>
+            <div class="loyalty-highlight">
+                <strong>Как получить:</strong> Просто попросите карту лояльности при покупке.
+            </div>
+        </div>
+        
+        <!-- 5+1 -->
+        <div class="loyalty-card">
+            <h3 class="loyalty-title"><span>✨</span> Акция "5+1"</h3>
+            <div class="loyalty-price">от 5шт печенья = +1 в подарок</div>
+            <p class="loyalty-desc">Купите от 5шт печенья и получите ещё одно в подарок — секретный вкус, который нельзя купить отдельно!</p>
+        </div>
+        
+        <!-- Набор "Весь Нью-Йорк" -->
+        <div class="loyalty-card">
+            <h3 class="loyalty-title"><span>🎁</span> Коллекция MOONY. Полное издание</h3>
+            <div class="loyalty-price">12 печений + шанс на "Золотой билет"</div>
+            <p class="loyalty-desc">Не ломайте голову и не ищите компромиссы. Покупайте всю коллекцию вкусов!</p>
+            <div class="loyalty-highlight golden-ticket-highlight" id="goldenTicket">
+                <strong>🎫 Золотой билет:</strong> В 3 случайные коробки каждый день мы кладём "Золотой билет" — вернув его нам, вы получите коробку из 6 печений на выбор!
+            </div>
+        </div>
+        
+        <!-- QR акция -->
+        <div class="loyalty-card">
+            <h3 class="loyalty-title"><span>📱</span> Выложи в соцсети — выиграй коробку!</h3>
+            <div class="loyalty-price">Каждое воскресенье — 2 победителя</div>
+            <p class="loyalty-desc">1. Сканируй QR-код на коробке<br>2. Выложи фото/видео в Instagram или TikTok с отметкой @moony_thecookie<br>3. Каждое воскресенье выбираем по 1 победителю в каждой соцсети</p>
+            <div class="loyalty-highlight">
+                <strong>🎁 Приз:</strong> Коробка печенья (6 шт.) на выбор!
+            </div>
+        </div>
+    </section>
+    
+    <!-- Секция информации о бренде - ОБНОВЛЕННАЯ -->
+    <section id="info" class="menu-section info-section">
+        <h2 class="info-title">О MOONY</h2>
+        
+        <!-- Что такое Нью-Йорк Стайл? -->
+        <div class="info-box">
+            <div class="info-box-header">
+                <div class="info-box-icon">🗽</div>
+                <div class="info-box-title">Что такое Нью-Йорк Стайл?</div>
+            </div>
+            <div class="info-box-content">
+                Нью-Йорк стайл печенье — это огромное, пышное печенье с хрустящим краем и нежной серединкой, щедро начинённое кусками шоколада и орехами. Его канон задала пекарня Levain в Нью-Йорке, и навсегда наделила такой вид печенья культовым статусом.
+            </div>
+        </div>
+        
+        <!-- MOONY философия -->
+        <div class="info-box">
+            <div class="info-box-header">
+                <div class="info-box-icon">🍪</div>
+                <div class="info-box-title">MOONY</div>
+            </div>
+            <div class="info-box-content">
+                Мы берём хорошую идею и доводим до идеала. Рецепт нашего печенья простой, самое главное — хорошие ингредиенты, качественное масло, отборные свежие орехи, щедрые порции шоколада. Делаем честно, просто, с душой.
+            </div>
+        </div>
+        
+        <!-- Привет от создательницы -->
+        <div class="info-box">
+            <div class="info-box-header">
+                <div class="info-box-icon">❤️</div>
+                <div class="info-box-title">Привет от создательницы</div>
+            </div>
+            <div class="info-box-content">
+                Это Анастасия, основательница MOONY, пишу этот сайт и рада, что могу дотянуться до каждого из Вас. Благодарю за доверие, время и ресурсы, надеюсь, вам пришёлся по душе проект.
+                <br><br>
+                Я не могу физически быть всегда рядом с Вами, но могу быть на связи. Поэтому вы всегда можете связаться со мной — пишите в телеграмм или на почту. Эти сообщения прочитаю и отвечу именно я.
+                <br><br>
+                Если у Вас есть классные идеи вкусов, обратная связь по сервису или конструктивная критика — пишите. Вы — то, ради чего всё затевалось!
+                
+                <div class="contact-links">
+                    <a href="https://t.me/moony_thecookie" class="contact-link-info" target="_blank">
+                        <span>📱</span> Telegram: moony_thecookie
+                    </a>
+                    <a href="mailto:anastasiakuznetsova58@mail.ru" class="contact-link-info">
+                        <span>📧</span> anastasiakuznetsova58@mail.ru
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-brand">MOONY</div>
+        <div class="footer-subtitle">NEW YORK STYLE COOKIES</div>
+        
+        <!-- Часы работы -->
+        <div class="working-hours">
+            🕒 <strong>Часы работы:</strong> Ежедневно с 10:00 до 22:00
+        </div>
+        
+        <div class="contacts">
+            <a href="https://t.me/moony_thecookie" class="contact-link" target="_blank">
+                <span>📱</span> Telegram: moony_thecookie
+            </a>
+            <a href="https://instagram.com/moony_thecookie" class="contact-link" target="_blank">
+                <span>📸</span> Instagram: @moony_thecookie
+            </a>
+            <a href="https://tiktok.com/@moony_thecookie" class="contact-link" target="_blank">
+                <span>🎵</span> TikTok: @moony_thecookie
+            </a>
+        </div>
+        
+        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">
+            Торговый центр Гринвич | 0 уровень | У Гипермаркета
+        </p>
+    </footer>
+
+    <script>
+        // Функция переключения секций меню
+        function showSection(sectionId, progressPercent) {
+            // Скрываем все секции
+            document.querySelectorAll('.menu-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Убираем активный класс у всех кнопок
+            document.querySelectorAll('.menu-nav button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Показываем выбранную секцию
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Активируем соответствующую кнопку
+            event.currentTarget.classList.add('active');
+            
+            // Плавно прокручиваем к началу секции
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        
+        // Функция обновления прогресс бара - ТЕПЕРЬ ИНДИКАТОР СКРОЛЛА ПО ВСЕЙ СТРАНИЦЕ
+        function updateScrollProgress() {
+            const progressBar = document.getElementById('progressBar');
+            
+            // Вычисляем прогресс скролла по всей странице
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = window.scrollY;
+            
+            if (windowHeight > 0) {
+                const scrollPercent = (scrolled / windowHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            }
+        }
+        
+        // Секретные подсказки для интерактивной карточки (БЕЗ раскрытия вкусов)
+        const secretHints = [
+            "🎁 Секретный сюрприз ждёт вас!",
+            "🎯 Попробуйте угадать наш секретный вкус!",
+            "✨ Секретная начинка меняется каждую неделю!",
+            "🤫 Секрет раскроется при покупке от 5шт печенья!",
+            "🍪 Удивительный вкус, который нельзя купить отдельно!"
+        ];
+        
+        let hintIndex = 0;
+        
+        // Функция для раскрытия подсказки о секретном вкусе
+        function revealSecretHint() {
+            const secretCard = document.querySelector('.secret-flavor-card');
+            const originalText = secretCard.querySelector('.product-desc');
+            
+            // Сохраняем оригинальный текст
+            const originalContent = originalText.innerHTML;
+            
+            // Показываем подсказку (без раскрытия вкуса)
+            originalText.innerHTML = secretHints[hintIndex];
+            originalText.style.color = "white";
+            originalText.style.fontWeight = "600";
+            originalText.style.fontSize = "1rem";
+            
+            // Меняем анимацию
+            secretCard.style.animation = "pulse 1s infinite";
+            
+            // Через 3 секунды возвращаем оригинальный текст
+            setTimeout(() => {
+                originalText.innerHTML = originalContent;
+                originalText.style.color = "rgba(255, 255, 255, 0.9)";
+                originalText.style.fontWeight = "normal";
+                originalText.style.fontSize = "0.95rem";
+                secretCard.style.animation = "pulse 4s infinite";
+                
+                // Переходим к следующей подсказке
+                hintIndex = (hintIndex + 1) % secretHints.length;
+            }, 3000);
+        }
+        
+        // Функция для создания эффекта искр на Золотом билете
+        function createGoldenTicketSparkles() {
+            const goldenTicket = document.getElementById('goldenTicket');
+            if (!goldenTicket) return;
+            
+            // Создаем несколько искр
+            for (let i = 0; i < 5; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'golden-ticket-sparkle';
+                
+                // Случайная позиция
+                const left = Math.random() * 90 + 5;
+                const top = Math.random() * 80 + 10;
+                const delay = Math.random() * 2;
+                const duration = 1 + Math.random() * 2;
+                
+                sparkle.style.left = left + '%';
+                sparkle.style.top = top + '%';
+                sparkle.style.animationDelay = delay + 's';
+                sparkle.style.animationDuration = duration + 's';
+                
+                goldenTicket.appendChild(sparkle);
+            }
+        }
+        
+        // Функция для показа/скрытия кнопки "Наверх"
+        function toggleScrollTopButton() {
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }
+        
+        // Функция прокрутки наверх
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Создаем искры для Золотого билета
+            createGoldenTicketSparkles();
+            
+            // Добавляем обработчик скролла для прогресс-бара (индикатор скролла)
+            window.addEventListener('scroll', updateScrollProgress);
+            
+            // Добавляем обработчик скролла для кнопки "Наверх"
+            window.addEventListener('scroll', toggleScrollTopButton);
+            
+            // Инициализируем прогресс-бар
+            updateScrollProgress();
+            
+            // Добавляем обработчик клика для кнопки "Наверх"
+            document.getElementById('scrollTopBtn').addEventListener('click', scrollToTop);
+            
+            // Добавляем возможность переключения секций с клавиатуры
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    const buttons = document.querySelectorAll('.menu-nav button');
+                    const activeIndex = Array.from(buttons).findIndex(btn => btn.classList.contains('active'));
+                    const nextIndex = (activeIndex + 1) % buttons.length;
+                    buttons[nextIndex].click();
+                } else if (e.key === 'ArrowLeft') {
+                    const buttons = document.querySelectorAll('.menu-nav button');
+                    const activeIndex = Array.from(buttons).findIndex(btn => btn.classList.contains('active'));
+                    const prevIndex = (activeIndex - 1 + buttons.length) % buttons.length;
+                    buttons[prevIndex].click();
+                }
+            });
+            
+            // Инициализируем кнопку "Наверх" при загрузке
+            toggleScrollTopButton();
+        });
+    </script>
+</body>
+</html>
