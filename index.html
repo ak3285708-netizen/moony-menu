@@ -84,7 +84,6 @@
             letter-spacing: 1px;
         }
         
-        /* ЛИПКАЯ НАВИГАЦИЯ - ТЕПЕРЬ СКРЫВАЕТСЯ ПРИ СКРОЛЛЕ */
         .menu-nav-container {
             position: sticky;
             top: 0;
@@ -151,7 +150,6 @@
             animation: microBounce 0.3s ease;
         }
         
-        /* Секции меню */
         .menu-section {
             display: none;
             animation: fadeIn 0.5s ease;
@@ -192,7 +190,6 @@
             background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
         }
         
-        /* Карточки продуктов - ОПТИМИЗИРОВАНО ДЛЯ МОБИЛЬНЫХ */
         .products-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -253,7 +250,6 @@
             border-radius: 15px;
         }
         
-        /* Секретный вкус */
         .secret-flavor-card {
             background: linear-gradient(135deg, var(--lavender-light) 0%, var(--lavender-primary) 100%);
             color: white;
@@ -354,7 +350,6 @@
             animation: pulse 4s infinite;
         }
         
-        /* Система лояльности */
         .loyalty-section {
             background: linear-gradient(135deg, #F8F6FF 0%, #F0EDFF 100%);
             border: 2px solid var(--lavender-light);
@@ -412,7 +407,6 @@
             transition: all 0.3s ease;
         }
         
-        /* ЗОЛОТОЙ БИЛЕТ - НОВЫЙ ЭФФЕКТ БЛЕСКА (без странных шариков) */
         .golden-ticket-highlight {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 165, 0, 0.15) 100%) !important;
             border: 2px solid var(--accent-gold) !important;
@@ -448,12 +442,6 @@
             z-index: 1;
         }
         
-        .loyalty-card:hover .loyalty-highlight {
-            background: rgba(255, 215, 0, 0.15);
-            border-color: var(--accent-gold-dark);
-        }
-        
-        /* Кнопка "Наверх" */
         .scroll-top-btn {
             position: fixed;
             bottom: 30px;
@@ -489,7 +477,6 @@
             box-shadow: 0 8px 20px rgba(177, 177, 232, 0.6);
         }
         
-        /* Информация о бренде */
         .info-section {
             background: var(--white);
             border-radius: 16px;
@@ -588,7 +575,6 @@
             box-shadow: 0 5px 15px rgba(177, 177, 232, 0.3);
         }
         
-        /* Футер */
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -646,7 +632,6 @@
             transform: translateY(-2px);
         }
         
-        /* Стили для печати */
         @media print {
             .progress-container, .menu-nav, .scroll-top-btn {
                 display: none !important;
@@ -669,100 +654,79 @@
             }
         }
         
-        /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ - УЛУЧШЕННАЯ */
         @media (max-width: 768px) {
             body {
                 padding: 15px;
             }
-            
             .header {
                 padding: 30px 15px;
                 margin-bottom: 20px;
             }
-            
             .brand-name {
                 font-size: 3rem;
                 letter-spacing: 2px;
             }
-            
             .subtitle {
                 font-size: 1.2rem;
             }
-            
             .menu-nav {
                 margin: 20px 0;
                 padding: 12px;
                 gap: 10px;
             }
-            
             .menu-nav button {
                 padding: 12px 15px;
                 font-size: 0.9rem;
                 min-width: 100px;
             }
-            
             .menu-section {
                 padding: 25px 20px;
                 margin-bottom: 20px;
             }
-            
             .section-title, .info-title {
                 font-size: 1.8rem;
                 margin-bottom: 20px;
             }
-            
             .products-container {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-            
             .product-card {
                 padding: 18px;
                 min-height: auto;
             }
-            
             .product-name {
                 font-size: 1.3rem;
             }
-            
             .product-desc {
                 font-size: 0.9rem;
             }
-            
             .loyalty-card {
                 padding: 20px;
             }
-            
             .loyalty-title {
                 font-size: 1.4rem;
             }
-            
             .loyalty-price {
                 font-size: 1.2rem;
             }
-            
             .info-box {
                 padding: 20px;
             }
-            
             .info-box-title {
                 font-size: 1.3rem;
             }
-            
             .contact-links {
                 flex-direction: column;
                 gap: 10px;
             }
-            
             .contacts {
                 flex-direction: column;
                 gap: 15px;
             }
-            
             .secret-tooltip {
                 display: none;
             }
-            
             .scroll-top-btn {
                 bottom: 20px;
                 right: 20px;
@@ -770,8 +734,6 @@
                 height: 45px;
                 font-size: 1.3rem;
             }
-            
-            /* На мобильных упрощаем анимации */
             .secret-flavor-card {
                 animation: none;
             }
@@ -790,39 +752,30 @@
             .brand-name {
                 font-size: 2.5rem;
             }
-            
             .subtitle {
                 font-size: 1.1rem;
             }
-            
             .menu-nav {
                 flex-direction: column;
             }
-            
             .menu-nav button {
                 width: 100%;
             }
-            
             .section-title, .info-title {
                 font-size: 1.6rem;
             }
-            
             .menu-section {
                 padding: 20px 15px;
             }
-            
             .product-name {
                 font-size: 1.2rem;
             }
-            
             .loyalty-title {
                 font-size: 1.3rem;
             }
-            
             .info-box-title {
                 font-size: 1.2rem;
             }
-            
             .scroll-top-btn {
                 bottom: 15px;
                 right: 15px;
@@ -836,11 +789,9 @@
             .brand-name {
                 font-size: 2.2rem;
             }
-            
             .header {
                 padding: 25px 10px;
             }
-            
             .menu-nav button {
                 padding: 10px 12px;
                 font-size: 0.85rem;
@@ -872,77 +823,97 @@
         <h2 class="section-title">13 вкусов New York Style печенья</h2>
         
         <div class="products-container">
-            <!-- Красный бархат -->
+            <!-- 1. Красный бархат -->
             <div class="product-card">
                 <h3 class="product-name">Красный бархат</h3>
-                <p class="product-desc">Кремчиз, белый шоколад и балдежное нежное тесто.</p>
+                <p class="product-desc">Внебрачный сын чизкейка и охотник за твоим сердцем! Кремчиз, белый шоколад и балдежное нежное тесто.</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
             
-            <!-- Шоколадные капли -->
-            <div class="product-card">
-                <h3 class="product-name">Шоколадные капли</h3>
-                <p class="product-desc">Классическое ароматное американское печенье с нежнейшим тестом и каплями молочного шоколада.</p>
-                <div class="product-details">
-                    <span class="product-weight">120 гр</span>
-                    <span class="product-price-small">270 ₽</span>
-                </div>
-            </div>
-            
-            <!-- Киндер -->
+            <!-- 2. Киндер -->
             <div class="product-card">
                 <h3 class="product-name">Киндер</h3>
-                <p class="product-desc">Нежное тесто с молочным и белым шоколадом, начинка из шоколадки Kinder.</p>
+                <p class="product-desc">Создано по мотивам самой нежной шоколадки. Румяная хрустящая корочка снаружи. Тесто обволакивает оригинальную шоколадку Kinder, вместе с молочным и белым шоколадом.</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
             
-            <!-- Орео -->
+            <!-- 3. Твикс -->
             <div class="product-card">
-                <h3 class="product-name">Орео</h3>
-                <p class="product-desc">Если бы Oreo было большим и нежным печеньем. Точь-в-точь повторяем вкус, только в мягком большом формате. Яркое чёрное какао, молочный шоколад.</p>
+                <h3 class="product-name">Твикс</h3>
+                <p class="product-desc">Две палочки Twix, как реклама предрекла... Нежная нуга и неповторимый карамельный вкус скрывают хрустящую начинку. Аккуратный баланс сладости и фирменной текстуры.</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
             
-            <!-- Нутелла -->
+            <!-- 4. Ягодный крем -->
             <div class="product-card">
-                <h3 class="product-name">Нутелла</h3>
-                <p class="product-desc">Тесто с нотками ванили, молочный шоколад и печенье, полное начинки из оригинальной пасты Nutella.</p>
+                <h3 class="product-name">Ягодный крем</h3>
+                <p class="product-desc">Терпкая, сливочно-нежная начинка из свежих лесных ягод. Вкус нежного йогурта и текстура перетёртых ягод. Каждый укус — как ложка свежего десерта.</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
             
-            <!-- Баунти -->
+            <!-- 5. M&M's -->
             <div class="product-card">
-                <h3 class="product-name">Баунти</h3>
-                <p class="product-desc">Ароматный хрустящий кокос, молочные капли и сердцевина из молочного шоколада.</p>
+                <h3 class="product-name">M&M's</h3>
+                <p class="product-desc">Вы точно не хотите это упустить! Тесто пестрит шоколадными и арахисовыми конфетами, хрустящая текстура встречается с молочными драже. Лучшее из двух миров в неповторимом тесте!</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
             
-            <!-- Дубайский Шоколад -->
+            <!-- 6. Малина Кешью -->
+            <div class="product-card">
+                <h3 class="product-name">Малина Кешью</h3>
+                <p class="product-desc">Цельная малина в каждом укусе! Яркая сочная ягода в дуете с запечённым сливочным кешью. Белый шоколад объединяет пару в хрустящем тесте.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- 7. Лесные ягоды -->
+            <div class="product-card">
+                <h3 class="product-name">Лесные ягоды</h3>
+                <p class="product-desc">Свежая клубника, ежевика, малина, голубика, красная и чёрная смородина с нежными вкраплениями белого шоколада.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- 8. Дубайский Шоколад -->
             <div class="product-card">
                 <h3 class="product-name">Дубайский Шоколад</h3>
-                <p class="product-desc">Хрустящее обжаренное тесто катаифи, фисташковая паста в дуэте с капелькой тахини. Известный на весь мир вкус начинки Дубайского шоколада — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
+                <p class="product-desc">Хрустящее обжаренное тесто катаифи обваливает 100% фисташковая паста в дуэте с капелькой тахини, чтобы воспроизвести тот самый, известный на весь мир, вкус начинки Дубайского шоколада. И всё это — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
             
-            <!-- Нутелла Шоколад -->
+            <!-- 9. Нутелла -->
+            <div class="product-card">
+                <h3 class="product-name">Нутелла</h3>
+                <p class="product-desc">Хрустящее снаружи и очень нежное, тягучее внутри. Шоколадные капли и печенье полное начинки из оригинальной пасты Nutella.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- 10. Нутелла Шоколад -->
             <div class="product-card">
                 <h3 class="product-name">Нутелла Шоколад</h3>
                 <p class="product-desc">Наше фирменное балдежное тесто с мягким вкусом шоколада, рубленый ароматный запечённый фундук и молочный шоколад. Ах да, для тех, кому не хватило — растекающаяся сердцевина из пасты Nutella.</p>
@@ -952,54 +923,33 @@
                 </div>
             </div>
             
-            <!-- Кукис Энд Крим -->
+            <!-- 11. Баунти -->
+            <div class="product-card">
+                <h3 class="product-name">Баунти</h3>
+                <p class="product-desc">Ароматный хрустящий кокос, молочные капли и сердцевина из молочного шоколада.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <!-- 12. Кукис Энд Крим -->
             <div class="product-card">
                 <h3 class="product-name">Кукис Энд Крим</h3>
-                <p class="product-desc">База из мягкого теста Oreo нежно хрустит, обнажая щедрое количество белого шоколада, соседствующего с кусочками печенья Oreo. А внутри — молочная сердцевина.</p>
+                <p class="product-desc">База из мягкого теста с незабываемым вкусом Oreo нежно хрустит, обнажая щедро разлитую начинку из белого шоколада.</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
             
-            <!-- Овсянка Миндаль -->
-            <div class="product-card">
-                <h3 class="product-name">Овсянка Миндаль</h3>
-                <p class="product-desc">Текстура! Текстура! Текстура! Хрустим и балдеем. Цельнозерновые овсяные хлопья, запечённый ароматный миндаль и тягучий молочный шоколад.</p>
-                <div class="product-details">
-                    <span class="product-weight">120 гр</span>
-                    <span class="product-price-small">270 ₽</span>
-                </div>
-            </div>
-            
-            <!-- Арахисовая Паста -->
-            <div class="product-card">
-                <h3 class="product-name">Арахисовая Паста</h3>
-                <p class="product-desc">Терпкая ароматная арахисовая паста в сочетании со сладким и нежнейшим белым и молочным шоколадом, и, конечно же, обжаренный арахис.</p>
-                <div class="product-details">
-                    <span class="product-weight">120 гр</span>
-                    <span class="product-price-small">270 ₽</span>
-                </div>
-            </div>
-            
-            <!-- Нью-Йорк Стайл -->
-            <div class="product-card">
-                <h3 class="product-name">Нью-Йорк Стайл</h3>
-                <p class="product-desc">Классика, с которой всё началось! Вдохновлено знаменитыми Levain cookies. Пышное тесто, запечённый ароматный фундук и тёмный шоколад.</p>
-                <div class="product-details">
-                    <span class="product-weight">120 гр</span>
-                    <span class="product-price-small">270 ₽</span>
-                </div>
-            </div>
-            
-            <!-- Секретный вкус -->
+            <!-- 13. Секретный вкус -->
             <div class="product-card secret-flavor-card" onclick="revealSecretHint()">
                 <h3 class="product-name" style="color: white;">Секретный вкус</h3>
                 <p class="product-desc" style="color: rgba(255, 255, 255, 0.9); text-align: center;">Радуем вас и дарим при покупке от 5шт печенья</p>
                 <div class="product-details">
                     <span class="secret-price-center">0 ₽</span>
                 </div>
-                
                 <div class="secret-tooltip">
                     🎁 Секретный подарок!<br>
                     При покупке 5+ печений вы получаете специальный вкус, который меняется каждую неделю!
@@ -1119,54 +1069,37 @@
     </footer>
 
     <script>
-        // Функция переключения секций меню
         function showSection(sectionId) {
-            // Скрываем все секции
             document.querySelectorAll('.menu-section').forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Убираем активный класс у всех кнопок
             document.querySelectorAll('.menu-nav button').forEach(button => {
                 button.classList.remove('active');
             });
-            
-            // Показываем выбранную секцию
             document.getElementById(sectionId).classList.add('active');
-            
-            // Активируем соответствующую кнопку
             event.currentTarget.classList.add('active');
-            
-            // Плавно прокручиваем к началу секции
             document.getElementById(sectionId).scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
-            
-            // Показываем навигацию после переключения
             const navContainer = document.getElementById('menuNavContainer');
             navContainer.classList.remove('hidden');
-            
-            // Через 2 секунды снова скрываем, если пользователь продолжает скроллить
             clearTimeout(window.navTimeout);
             window.navTimeout = setTimeout(() => {
                 hideNavOnScroll();
             }, 2000);
         }
         
-        // Функция обновления прогресс бара
         function updateScrollProgress() {
             const progressBar = document.getElementById('progressBar');
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = window.scrollY;
-            
             if (windowHeight > 0) {
                 const scrollPercent = (scrolled / windowHeight) * 100;
                 progressBar.style.width = scrollPercent + '%';
             }
         }
         
-        // Секретные подсказки
         const secretHints = [
             "🎁 Секретный сюрприз ждёт вас!",
             "🎯 Попробуйте угадать наш секретный вкус!",
@@ -1180,72 +1113,55 @@
         function revealSecretHint() {
             const secretCard = document.querySelector('.secret-flavor-card');
             const originalText = secretCard.querySelector('.product-desc');
-            
             const originalContent = originalText.innerHTML;
             originalText.innerHTML = secretHints[hintIndex];
             originalText.style.color = "white";
             originalText.style.fontWeight = "600";
             originalText.style.fontSize = "1rem";
-            
             secretCard.style.animation = "pulse 1s infinite";
-            
             setTimeout(() => {
                 originalText.innerHTML = originalContent;
                 originalText.style.color = "rgba(255, 255, 255, 0.9)";
                 originalText.style.fontWeight = "normal";
                 originalText.style.fontSize = "0.95rem";
                 secretCard.style.animation = "pulse 4s infinite";
-                
                 hintIndex = (hintIndex + 1) % secretHints.length;
             }, 3000);
         }
         
-        // Управление навигацией при скролле
         let lastScrollTop = 0;
         let isNavVisible = true;
         
         function handleScroll() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const navContainer = document.getElementById('menuNavContainer');
-            
-            // Показываем/скрываем навигацию
             if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Скроллим вниз - скрываем
                 if (isNavVisible) {
                     navContainer.classList.add('hidden');
                     isNavVisible = false;
                 }
             } else if (scrollTop < lastScrollTop) {
-                // Скроллим вверх - показываем
                 if (!isNavVisible) {
                     navContainer.classList.remove('hidden');
                     isNavVisible = true;
                 }
             }
-            
             lastScrollTop = scrollTop;
-            
-            // Показываем/скрываем кнопку "Наверх"
             toggleScrollTopButton();
-            
-            // Обновляем прогресс бар
             updateScrollProgress();
         }
         
         function hideNavOnScroll() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const navContainer = document.getElementById('menuNavContainer');
-            
             if (scrollTop > 100 && isNavVisible) {
                 navContainer.classList.add('hidden');
                 isNavVisible = false;
             }
         }
         
-        // Функция для показа/скрытия кнопки "Наверх"
         function toggleScrollTopButton() {
             const scrollTopBtn = document.getElementById('scrollTopBtn');
-            
             if (window.scrollY > 300) {
                 scrollTopBtn.classList.add('visible');
             } else {
@@ -1253,29 +1169,20 @@
             }
         }
         
-        // Функция прокрутки наверх
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
-            
-            // Показываем навигацию при клике на кнопку "Наверх"
             const navContainer = document.getElementById('menuNavContainer');
             navContainer.classList.remove('hidden');
             isNavVisible = true;
         }
         
-        // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            // Добавляем обработчики скролла
             window.addEventListener('scroll', handleScroll);
             window.addEventListener('scroll', updateScrollProgress);
-            
-            // Обработчик для кнопки "Наверх"
             document.getElementById('scrollTopBtn').addEventListener('click', scrollToTop);
-            
-            // Управление с клавиатуры
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight') {
                     const buttons = document.querySelectorAll('.menu-nav button');
@@ -1293,8 +1200,6 @@
                     }
                 }
             });
-            
-            // Инициализация
             toggleScrollTopButton();
             updateScrollProgress();
         });
