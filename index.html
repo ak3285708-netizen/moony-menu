@@ -250,106 +250,6 @@
             border-radius: 15px;
         }
         
-        .secret-flavor-card {
-            background: linear-gradient(135deg, var(--lavender-light) 0%, var(--lavender-primary) 100%);
-            color: white;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        
-        .secret-flavor-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, 
-                transparent 30%, 
-                rgba(255, 255, 255, 0.1) 50%, 
-                transparent 70%);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-        
-        .secret-flavor-card:hover::before {
-            opacity: 1;
-            animation: shine 1.5s ease;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .secret-flavor-card .product-details {
-            border-top: none;
-            padding-top: 0;
-            margin-top: 0;
-            justify-content: center;
-        }
-        
-        .secret-price-center {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 15px;
-            text-align: center;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-        
-        .secret-flavor-card:hover .secret-price-center {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        .secret-tooltip {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            text-align: center;
-            width: 80%;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 10;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .secret-flavor-card:hover .secret-tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .secret-message {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 5px;
-            font-style: italic;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-        
-        .secret-flavor-card {
-            animation: pulse 4s infinite;
-        }
-        
         .loyalty-section {
             background: linear-gradient(135deg, #F8F6FF 0%, #F0EDFF 100%);
             border: 2px solid var(--lavender-light);
@@ -649,9 +549,6 @@
                 transform: none !important;
                 box-shadow: none !important;
             }
-            .secret-flavor-card {
-                animation: none !important;
-            }
         }
         
         @media (max-width: 768px) {
@@ -724,18 +621,12 @@
                 flex-direction: column;
                 gap: 15px;
             }
-            .secret-tooltip {
-                display: none;
-            }
             .scroll-top-btn {
                 bottom: 20px;
                 right: 20px;
                 width: 45px;
                 height: 45px;
                 font-size: 1.3rem;
-            }
-            .secret-flavor-card {
-                animation: none;
             }
             .product-card:hover {
                 transform: none;
@@ -893,10 +784,10 @@
                 </div>
             </div>
             
-            <!-- 8. Дубайский Шоколад -->
+            <!-- 8. Морковный Торт (был 13, теперь на 8 месте) -->
             <div class="product-card">
-                <h3 class="product-name">Дубайский Шоколад</h3>
-                <p class="product-desc">Хрустящее обжаренное тесто катаифи обваливает 100% фисташковая паста в дуэте с капелькой тахини, чтобы воспроизвести тот самый, известный на весь мир, вкус начинки Дубайского шоколада. И всё это — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
+                <h3 class="product-name">Морковный Торт</h3>
+                <p class="product-desc">Ароматное хрустящее печенье с мягкой сердцевиной из кремчиза, наполненное белым шоколадом и обжаренным грецким орехом и конечно самой сладкой морковкой. Печенье с самой невероятной текстурой!</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
@@ -923,10 +814,10 @@
                 </div>
             </div>
             
-            <!-- 11. Баунти -->
+            <!-- 11. Дубайский Шоколад (был 8, теперь на 11 месте) -->
             <div class="product-card">
-                <h3 class="product-name">Баунти</h3>
-                <p class="product-desc">Ароматный хрустящий кокос, молочные капли и сердцевина из молочного шоколада.</p>
+                <h3 class="product-name">Дубайский Шоколад</h3>
+                <p class="product-desc">Хрустящее обжаренное тесто катаифи обваливает 100% фисташковая паста в дуэте с капелькой тахини, чтобы воспроизвести тот самый, известный на весь мир, вкус начинки Дубайского шоколада. И всё это — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">270 ₽</span>
@@ -943,17 +834,13 @@
                 </div>
             </div>
             
-            <!-- 13. Секретный вкус -->
-            <div class="product-card secret-flavor-card" onclick="revealSecretHint()">
-                <h3 class="product-name" style="color: white;">Секретный вкус</h3>
-                <p class="product-desc" style="color: rgba(255, 255, 255, 0.9); text-align: center;">Радуем вас и дарим при покупке от 5шт печенья</p>
+            <!-- 13. Баунти (был 11, теперь на 13 месте) -->
+            <div class="product-card">
+                <h3 class="product-name">Баунти</h3>
+                <p class="product-desc">Ароматный хрустящий кокос, молочные капли и сердцевина из молочного шоколада.</p>
                 <div class="product-details">
-                    <span class="secret-price-center">0 ₽</span>
-                </div>
-                <div class="secret-tooltip">
-                    🎁 Секретный подарок!<br>
-                    При покупке 5+ печений вы получаете специальный вкус, который меняется каждую неделю!
-                    <div class="secret-message">Нажмите на карточку для получения подсказки о текущем вкусе</div>
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
         </div>
@@ -1098,35 +985,6 @@
                 const scrollPercent = (scrolled / windowHeight) * 100;
                 progressBar.style.width = scrollPercent + '%';
             }
-        }
-        
-        const secretHints = [
-            "🎁 Секретный сюрприз ждёт вас!",
-            "🎯 Попробуйте угадать наш секретный вкус!",
-            "✨ Секретная начинка меняется каждую неделю!",
-            "🤫 Секрет раскроется при покупке от 5шт печенья!",
-            "🍪 Удивительный вкус, который нельзя купить отдельно!"
-        ];
-        
-        let hintIndex = 0;
-        
-        function revealSecretHint() {
-            const secretCard = document.querySelector('.secret-flavor-card');
-            const originalText = secretCard.querySelector('.product-desc');
-            const originalContent = originalText.innerHTML;
-            originalText.innerHTML = secretHints[hintIndex];
-            originalText.style.color = "white";
-            originalText.style.fontWeight = "600";
-            originalText.style.fontSize = "1rem";
-            secretCard.style.animation = "pulse 1s infinite";
-            setTimeout(() => {
-                originalText.innerHTML = originalContent;
-                originalText.style.color = "rgba(255, 255, 255, 0.9)";
-                originalText.style.fontWeight = "normal";
-                originalText.style.fontSize = "0.95rem";
-                secretCard.style.animation = "pulse 4s infinite";
-                hintIndex = (hintIndex + 1) % secretHints.length;
-            }, 3000);
         }
         
         let lastScrollTop = 0;
