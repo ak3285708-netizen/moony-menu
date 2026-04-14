@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -307,41 +308,6 @@
             transition: all 0.3s ease;
         }
         
-        .golden-ticket-highlight {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 165, 0, 0.15) 100%) !important;
-            border: 2px solid var(--accent-gold) !important;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .golden-ticket-highlight::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to right,
-                transparent 20%,
-                rgba(255, 255, 255, 0.4) 50%,
-                transparent 80%
-            );
-            transform: rotate(30deg);
-            animation: goldenShine 3s infinite linear;
-        }
-        
-        @keyframes goldenShine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
-        }
-        
-        .golden-ticket-highlight strong {
-            color: #8B4513;
-            position: relative;
-            z-index: 1;
-        }
-        
         .scroll-top-btn {
             position: fixed;
             bottom: 30px;
@@ -634,9 +600,6 @@
             .loyalty-card:hover {
                 transform: none;
             }
-            .golden-ticket-highlight::before {
-                animation: none;
-            }
         }
         
         @media (max-width: 480px) {
@@ -705,7 +668,7 @@
     <div class="menu-nav-container" id="menuNavContainer">
         <nav class="menu-nav" id="stickyNav">
             <button class="active" onclick="showSection('cookies')"><span>🍪</span> Печенье</button>
-            <button onclick="showSection('loyalty')"><span>🎁</span> Система лояльности</button>
+            <button onclick="showSection('loyalty')"><span>🎁</span> Системы лояльности</button>
             <button onclick="showSection('info')"><span>ℹ️</span> О MOONY</button>
         </nav>
     </div>
@@ -784,7 +747,7 @@
                 </div>
             </div>
             
-            <!-- 8. Морковный Торт (был 13, теперь на 8 месте) -->
+            <!-- 8. Морковный Торт -->
             <div class="product-card">
                 <h3 class="product-name">Морковный Торт</h3>
                 <p class="product-desc">Ароматное хрустящее печенье с мягкой сердцевиной из кремчиза, наполненное белым шоколадом и обжаренным грецким орехом и конечно самой сладкой морковкой. Печенье с самой невероятной текстурой!</p>
@@ -814,7 +777,7 @@
                 </div>
             </div>
             
-            <!-- 11. Дубайский Шоколад (был 8, теперь на 11 месте) -->
+            <!-- 11. Дубайский Шоколад -->
             <div class="product-card">
                 <h3 class="product-name">Дубайский Шоколад</h3>
                 <p class="product-desc">Хрустящее обжаренное тесто катаифи обваливает 100% фисташковая паста в дуэте с капелькой тахини, чтобы воспроизвести тот самый, известный на весь мир, вкус начинки Дубайского шоколада. И всё это — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
@@ -834,7 +797,7 @@
                 </div>
             </div>
             
-            <!-- 13. Баунти (был 11, теперь на 13 месте) -->
+            <!-- 13. Баунти -->
             <div class="product-card">
                 <h3 class="product-name">Баунти</h3>
                 <p class="product-desc">Ароматный хрустящий кокос, молочные капли и сердцевина из молочного шоколада.</p>
@@ -847,7 +810,7 @@
     </section>
     
     <section id="loyalty" class="menu-section loyalty-section">
-        <h2 class="section-title">Система лояльности</h2>
+        <h2 class="section-title">Системы лояльности</h2>
         
         <div class="loyalty-card">
             <h3 class="loyalty-title"><span>🏆</span> Собери свой район</h3>
@@ -859,18 +822,9 @@
         </div>
         
         <div class="loyalty-card">
-            <h3 class="loyalty-title"><span>✨</span> Акция "5+1"</h3>
+            <h3 class="loyalty-title"><span>✨</span> Система "5+1"</h3>
             <div class="loyalty-price">от 5шт печенья = +1 в подарок</div>
-            <p class="loyalty-desc">Купите от 5шт печенья и получите ещё одно в подарок — секретный вкус, который нельзя купить отдельно!</p>
-        </div>
-        
-        <div class="loyalty-card">
-            <h3 class="loyalty-title"><span>🎁</span> Коллекция MOONY. Полное издание</h3>
-            <div class="loyalty-price">12 печений + шанс на "Золотой билет"</div>
-            <p class="loyalty-desc">Не ломайте голову и не ищите компромиссы. Покупайте всю коллекцию вкусов!</p>
-            <div class="loyalty-highlight golden-ticket-highlight" id="goldenTicket">
-                <strong>🎫 Золотой билет:</strong> В 3 случайные коробки каждый день мы кладём "Золотой билет" — вернув его нам, вы получите коробку из 6 печений на выбор!
-            </div>
+            <p class="loyalty-desc">Купите от 5шт печенья и получите ещё одно в подарок — ЛЮБОЙ из 13 вкусов на ваш выбор!</p>
         </div>
         
         <div class="loyalty-card">
@@ -1064,3 +1018,4 @@
     </script>
 </body>
 </html>
+```
