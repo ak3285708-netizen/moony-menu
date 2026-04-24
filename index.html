@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -251,6 +250,26 @@
             border-radius: 15px;
         }
         
+        .info-box {
+            background: var(--lavender-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--lavender-light);
+            transition: all 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(177, 177, 232, 0.15);
+        }
+        
+        .info-box-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
         .loyalty-section {
             background: linear-gradient(135deg, #F8F6FF 0%, #F0EDFF 100%);
             border: 2px solid var(--lavender-light);
@@ -371,7 +390,7 @@
             background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
         }
         
-        .info-box {
+        .info-section .info-box {
             background: var(--lavender-bg);
             border-radius: 12px;
             padding: 25px;
@@ -380,7 +399,7 @@
             transition: all 0.3s ease;
         }
         
-        .info-box:hover {
+        .info-section .info-box:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(177, 177, 232, 0.15);
         }
@@ -406,12 +425,6 @@
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--lavender-dark);
-        }
-        
-        .info-box-content {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-dark);
         }
         
         .contact-links {
@@ -668,16 +681,17 @@
     <div class="menu-nav-container" id="menuNavContainer">
         <nav class="menu-nav" id="stickyNav">
             <button class="active" onclick="showSection('cookies')"><span>🍪</span> Печенье</button>
+            <button onclick="showSection('croissants')"><span>🥐</span> Крукки</button>
             <button onclick="showSection('loyalty')"><span>🎁</span> Системы лояльности</button>
             <button onclick="showSection('info')"><span>ℹ️</span> О MOONY</button>
         </nav>
     </div>
     
+    <!-- Секция печенья -->
     <section id="cookies" class="menu-section active">
         <h2 class="section-title">13 вкусов New York Style печенья</h2>
         
         <div class="products-container">
-            <!-- 1. Красный бархат -->
             <div class="product-card">
                 <h3 class="product-name">Красный бархат</h3>
                 <p class="product-desc">Внебрачный сын чизкейка и охотник за твоим сердцем! Кремчиз, белый шоколад и балдежное нежное тесто.</p>
@@ -687,7 +701,6 @@
                 </div>
             </div>
             
-            <!-- 2. Киндер -->
             <div class="product-card">
                 <h3 class="product-name">Киндер</h3>
                 <p class="product-desc">Создано по мотивам самой нежной шоколадки. Румяная хрустящая корочка снаружи. Тесто обволакивает оригинальную шоколадку Kinder, вместе с молочным и белым шоколадом.</p>
@@ -697,7 +710,6 @@
                 </div>
             </div>
             
-            <!-- 3. Твикс -->
             <div class="product-card">
                 <h3 class="product-name">Твикс</h3>
                 <p class="product-desc">Две палочки Twix, как реклама предрекла... Нежная нуга и неповторимый карамельный вкус скрывают хрустящую начинку. Аккуратный баланс сладости и фирменной текстуры.</p>
@@ -707,7 +719,6 @@
                 </div>
             </div>
             
-            <!-- 4. Ягодный йогурт -->
             <div class="product-card">
                 <h3 class="product-name">Ягодный йогурт</h3>
                 <p class="product-desc">Терпкая, сливочно-нежная начинка из свежих лесных ягод. Вкус нежного йогурта и текстура перетёртых ягод. Каждый укус — как ложка свежего десерта.</p>
@@ -717,7 +728,6 @@
                 </div>
             </div>
             
-            <!-- 5. M&M's -->
             <div class="product-card">
                 <h3 class="product-name">M&M's</h3>
                 <p class="product-desc">Вы точно не хотите это упустить! Тесто пестрит шоколадными и арахисовыми конфетами, хрустящая текстура встречается с молочными драже. Лучшее из двух миров в неповторимом тесте!</p>
@@ -727,7 +737,6 @@
                 </div>
             </div>
             
-            <!-- 6. Малина Кешью -->
             <div class="product-card">
                 <h3 class="product-name">Малина Кешью</h3>
                 <p class="product-desc">Цельная малина в каждом укусе! Яркая сочная ягода в дуете с запечённым сливочным кешью. Белый шоколад объединяет пару в хрустящем тесте.</p>
@@ -737,7 +746,6 @@
                 </div>
             </div>
             
-            <!-- 7. Лесные ягоды -->
             <div class="product-card">
                 <h3 class="product-name">Лесные ягоды</h3>
                 <p class="product-desc">Свежая клубника, ежевика, малина, голубика, красная и чёрная смородина с нежными вкраплениями белого шоколада.</p>
@@ -747,7 +755,6 @@
                 </div>
             </div>
             
-            <!-- 8. Морковный Торт -->
             <div class="product-card">
                 <h3 class="product-name">Морковный Торт</h3>
                 <p class="product-desc">Ароматное хрустящее печенье с мягкой сердцевиной из кремчиза, наполненное белым шоколадом и обжаренным грецким орехом и конечно самой сладкой морковкой. Печенье с самой невероятной текстурой!</p>
@@ -757,7 +764,6 @@
                 </div>
             </div>
             
-            <!-- 9. Нутелла -->
             <div class="product-card">
                 <h3 class="product-name">Нутелла</h3>
                 <p class="product-desc">Хрустящее снаружи и очень нежное, тягучее внутри. Шоколадные капли и печенье полное начинки из оригинальной пасты Nutella.</p>
@@ -767,7 +773,6 @@
                 </div>
             </div>
             
-            <!-- 10. Нутелла Шоколад -->
             <div class="product-card">
                 <h3 class="product-name">Нутелла Шоколад</h3>
                 <p class="product-desc">Наше фирменное балдежное тесто с мягким вкусом шоколада, рубленый ароматный запечённый фундук и молочный шоколад. Ах да, для тех, кому не хватило — растекающаяся сердцевина из пасты Nutella.</p>
@@ -777,7 +782,6 @@
                 </div>
             </div>
             
-            <!-- 11. Дубайский Шоколад -->
             <div class="product-card">
                 <h3 class="product-name">Дубайский Шоколад</h3>
                 <p class="product-desc">Хрустящее обжаренное тесто катаифи обваливает 100% фисташковая паста в дуэте с капелькой тахини, чтобы воспроизвести тот самый, известный на весь мир, вкус начинки Дубайского шоколада. И всё это — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
@@ -787,7 +791,6 @@
                 </div>
             </div>
             
-            <!-- 12. Кукис Энд Крим -->
             <div class="product-card">
                 <h3 class="product-name">Кукис Энд Крим</h3>
                 <p class="product-desc">База из мягкого теста с незабываемым вкусом Oreo нежно хрустит, обнажая щедро разлитую начинку из белого шоколада.</p>
@@ -797,7 +800,6 @@
                 </div>
             </div>
             
-            <!-- 13. Баунти -->
             <div class="product-card">
                 <h3 class="product-name">Баунти</h3>
                 <p class="product-desc">Ароматный хрустящий кокос, молочные капли и сердцевина из молочного шоколада.</p>
@@ -809,6 +811,38 @@
         </div>
     </section>
     
+    <!-- Секция Крукки -->
+    <section id="croissants" class="menu-section">
+        <h2 class="section-title">🥐 Крукки</h2>
+        
+        <div class="info-box">
+            <div class="info-box-content">
+                Крукки — это гибрид круассана и печенья. Дважды запекаемый сливочный круассан приобретает невероятно хрустящую текстуру, скрывая внутри начинку — то самое печенье MOONY с нежным молочным шоколадом или пастой Nutella.
+            </div>
+        </div>
+        
+        <div class="products-container">
+            <div class="product-card">
+                <h3 class="product-name">Крукки</h3>
+                <p class="product-desc">Воздушный сливочный круассан, фирменное печенье с молочным шоколадом внутри и снаружи круассана!</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">370 ₽</span>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <h3 class="product-name">Крукки Нутелла</h3>
+                <p class="product-desc">Название говорит за себя. Крукки для тех, кому сливочного вкуса будет недостаточно. Не переживайте, внутри круассан щедро начинён пастой Нутелла и любимым печеньем.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">370 ₽</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Системы лояльности -->
     <section id="loyalty" class="menu-section loyalty-section">
         <h2 class="section-title">Системы лояльности</h2>
         
@@ -837,6 +871,7 @@
         </div>
     </section>
     
+    <!-- О MOONY -->
     <section id="info" class="menu-section info-section">
         <h2 class="info-title">О MOONY</h2>
         
@@ -1018,4 +1053,3 @@
     </script>
 </body>
 </html>
-```
