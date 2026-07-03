@@ -682,6 +682,7 @@
         <nav class="menu-nav" id="stickyNav">
             <button class="active" onclick="showSection('cookies')"><span>🍪</span> Печенье</button>
             <button onclick="showSection('croissants')"><span>🥐</span> Крукки</button>
+            <button onclick="showSection('delivery')"><span>🚀</span> Доставка</button>
             <button onclick="showSection('loyalty')"><span>🎁</span> Системы лояльности</button>
             <button onclick="showSection('info')"><span>ℹ️</span> О MOONY</button>
         </nav>
@@ -828,6 +829,73 @@
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">370 ₽</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Секция доставки -->
+    <section id="delivery" class="menu-section">
+        <h2 class="section-title">🚀 Доставка MOONY</h2>
+        
+        <div class="info-box">
+            <div class="info-box-content">
+                <p style="font-size: 1.05rem; line-height: 1.7;">
+                    Подогреваем печенье перед отправкой, чтобы к вам оно приехало таким же тёплым и хрустящим, как из печи. Отправляем из Гринвича с любовью в любую точку города 🗽💜
+                </p>
+            </div>
+        </div>
+        
+        <div class="products-container" style="grid-template-columns: 1fr 1fr;">
+            <div class="product-card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🚚</div>
+                <h3 style="font-family: 'Lora', serif; font-size: 1.3rem; color: var(--lavender-dark);">Доставка</h3>
+                <p style="font-size: 0.95rem; color: var(--text-light);">от 6 штук (Печенье, Крукки или вместе)</p>
+            </div>
+            <div class="product-card" style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
+                <h3 style="font-family: 'Lora', serif; font-size: 1.3rem; color: var(--lavender-dark);">Самовывоз</h3>
+                <p style="font-size: 0.95rem; color: var(--text-light);">ТЦ «Гринвич», 0 уровень, у Гипермаркета<br>Ежедневно 10:00–22:00</p>
+            </div>
+        </div>
+        
+        <div class="info-box" style="margin-top: 20px;">
+            <div class="info-box-content">
+                <!-- Доставка -->
+                <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">🚚 Как заказать доставку:</p>
+                <p style="margin-bottom: 12px;">
+                    Напишите нам в Telegram или Instagram:
+                </p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 15px; color: var(--text-light);">
+                    <li style="padding: 4px 0;">• Вкусы и количество</li>
+                    <li style="padding: 4px 0;">• Адрес доставки</li>
+                    <li style="padding: 4px 0;">• Контактный номер телефона</li>
+                    <li style="padding: 4px 0;">• Удобный интервал для доставки или если ждёте печенье в ближайшее время</li>
+                </ul>
+                <p style="margin-bottom: 12px; color: var(--text-light);">
+                    Мы соберём заказ, подогреем и отправим от двери до двери.
+                </p>
+                
+                <!-- Блок о лояльности - внутри доставки -->
+                <div style="background: var(--lavender-bg); border-radius: 12px; padding: 14px; margin-bottom: 20px; border: 1px solid var(--lavender-light);">
+                    <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 4px;">🎁 По нашей системе лояльности вы также можете выбрать ЛЮБОЙ 7-й вкус в подарок! 🍪</p>
+                </div>
+                
+                <!-- Самовывоз -->
+                <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">📍 Как забрать самовывозом:</p>
+                <p style="margin-bottom: 12px; color: var(--text-light);">
+                    Напишите нам в Telegram или Instagram — сделайте предзаказ на любое количество печенья. Мы соберём заказ к вашему приходу и упакуем. Просто напишите, когда планируете подъехать 🚀
+                </p>
+                
+                <!-- Ссылки -->
+                <p style="font-weight: 600; font-size: 1rem; margin-top: 12px; margin-bottom: 12px;">Связаться с нами:</p>
+                <div class="contact-links" style="justify-content: center; margin-top: 10px;">
+                    <a href="https://t.me/moony_thecookie" class="contact-link-info" target="_blank">
+                        <span>📱</span> Telegram
+                    </a>
+                    <a href="https://www.instagram.com/moony_thecookie?igsh=MTRsaTJxNXJoc2V4MA%3D%3D" class="contact-link-info" target="_blank">
+                        <span>📸</span> Instagram
+                    </a>
                 </div>
             </div>
         </div>
