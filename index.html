@@ -18,13 +18,13 @@
             --accent-pink: #FFB6C1;
             --white: #FFFFFF;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--lavender-bg);
@@ -35,7 +35,7 @@
             margin: 0 auto;
             scroll-behavior: smooth;
         }
-
+        
         .progress-container {
             width: 100%;
             height: 4px;
@@ -45,14 +45,14 @@
             left: 0;
             z-index: 2000;
         }
-
+        
         .progress-bar {
             height: 100%;
             background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
             width: 0%;
             transition: width 0.1s ease;
         }
-
+        
         .header {
             text-align: center;
             padding: 40px 20px;
@@ -64,7 +64,7 @@
             border: 2px solid var(--lavender-dark);
             box-shadow: 0 10px 25px rgba(138, 138, 214, 0.2);
         }
-
+        
         .brand-name {
             font-family: 'Lora', serif;
             font-size: 4.5rem;
@@ -74,7 +74,7 @@
             letter-spacing: 3px;
             margin-bottom: 5px;
         }
-
+        
         .subtitle {
             font-family: 'Lora', serif;
             font-size: 1.5rem;
@@ -83,7 +83,7 @@
             font-weight: 400;
             letter-spacing: 1px;
         }
-
+        
         .menu-nav-container {
             position: sticky;
             top: 0;
@@ -96,11 +96,11 @@
             box-shadow: 0 5px 20px rgba(177, 177, 232, 0.15);
             padding: 0 15px;
         }
-
+        
         .menu-nav-container.hidden {
             transform: translateY(-105%);
         }
-
+        
         .menu-nav {
             display: flex;
             justify-content: center;
@@ -112,7 +112,7 @@
             border: none;
             box-shadow: none;
         }
-
+        
         .menu-nav button {
             background: transparent;
             border: 2px solid var(--lavender-primary);
@@ -132,29 +132,29 @@
             justify-content: center;
             white-space: nowrap;
         }
-
+        
         .menu-nav button:hover {
             background: var(--lavender-primary);
             color: var(--white);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(177, 177, 232, 0.3);
         }
-
+        
         .menu-nav button.active {
             background: var(--lavender-primary);
             color: var(--white);
             box-shadow: 0 4px 12px rgba(177, 177, 232, 0.25);
         }
-
+        
         @keyframes microBounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-2px); }
         }
-
+        
         .menu-nav button:hover {
             animation: microBounce 0.3s ease;
         }
-
+        
         .menu-section {
             display: none;
             animation: fadeIn 0.5s ease;
@@ -165,16 +165,16 @@
             border: 2px solid var(--lavender-light);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
+        
         .menu-section.active {
             display: block;
         }
-
+        
         .section-title {
             font-family: 'Lora', serif;
             font-size: 2.2rem;
@@ -184,7 +184,7 @@
             border-bottom: 2px solid var(--lavender-light);
             position: relative;
         }
-
+        
         .section-title::after {
             content: "";
             position: absolute;
@@ -194,13 +194,13 @@
             height: 2px;
             background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
         }
-
+        
         .products-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
-
+        
         .product-card {
             background: var(--lavender-bg);
             border-radius: 12px;
@@ -213,24 +213,13 @@
             flex-direction: column;
             min-height: 200px;
         }
-
+        
         .product-card:hover {
             border-color: var(--lavender-primary);
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(177, 177, 232, 0.2);
         }
-
-        /* Фото товара — квадратное, во всю ширину карточки */
-        .product-img {
-            display: block;
-            width: calc(100% + 40px);
-            margin: -20px -20px 16px -20px;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 12px 12px 0 0;
-            background: var(--lavender-light);
-        }
-
+        
         .product-name {
             font-family: 'Lora', serif;
             font-size: 1.4rem;
@@ -239,16 +228,15 @@
             margin-bottom: 10px;
             line-height: 1.3;
         }
-
+        
         .product-desc {
             color: var(--text-light);
             font-size: 0.95rem;
             margin-bottom: 15px;
             line-height: 1.5;
             flex-grow: 1;
-            white-space: pre-wrap;
         }
-
+        
         .product-details {
             display: flex;
             justify-content: space-between;
@@ -257,7 +245,7 @@
             padding-top: 15px;
             border-top: 1px solid var(--lavender-light);
         }
-
+        
         .product-weight, .product-price-small {
             font-size: 0.9rem;
             color: var(--white);
@@ -266,7 +254,7 @@
             padding: 6px 12px;
             border-radius: 15px;
         }
-
+        
         .info-box {
             background: var(--lavender-bg);
             border-radius: 12px;
@@ -275,23 +263,23 @@
             border: 1px solid var(--lavender-light);
             transition: all 0.3s ease;
         }
-
+        
         .info-box:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(177, 177, 232, 0.15);
         }
-
+        
         .info-box-content {
             font-size: 1rem;
             line-height: 1.6;
             color: var(--text-dark);
         }
-
+        
         .loyalty-section {
             background: linear-gradient(135deg, #F8F6FF 0%, #F0EDFF 100%);
             border: 2px solid var(--lavender-light);
         }
-
+        
         .loyalty-card {
             background: var(--white);
             border-radius: 12px;
@@ -303,13 +291,13 @@
             position: relative;
             overflow: hidden;
         }
-
+        
         .loyalty-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(177, 177, 232, 0.2);
             border-left: 4px solid var(--lavender-dark);
         }
-
+        
         .loyalty-title {
             font-family: 'Lora', serif;
             font-size: 1.6rem;
@@ -319,20 +307,20 @@
             align-items: center;
             gap: 10px;
         }
-
+        
         .loyalty-price {
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--lavender-primary);
             margin-bottom: 15px;
         }
-
+        
         .loyalty-desc {
             color: var(--text-light);
             font-size: 1rem;
             line-height: 1.6;
         }
-
+        
         .loyalty-highlight {
             background: rgba(255, 215, 0, 0.1);
             border: 2px solid var(--accent-gold);
@@ -343,7 +331,7 @@
             position: relative;
             transition: all 0.3s ease;
         }
-
+        
         .scroll-top-btn {
             position: fixed;
             bottom: 30px;
@@ -366,19 +354,19 @@
             align-items: center;
             justify-content: center;
         }
-
+        
         .scroll-top-btn.visible {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-
+        
         .scroll-top-btn:hover {
             background: var(--lavender-dark);
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(177, 177, 232, 0.6);
         }
-
+        
         .info-section {
             background: var(--white);
             border-radius: 16px;
@@ -386,7 +374,7 @@
             border: 2px solid var(--lavender-light);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-
+        
         .info-title {
             font-family: 'Lora', serif;
             font-size: 2.2rem;
@@ -396,7 +384,7 @@
             border-bottom: 2px solid var(--lavender-light);
             position: relative;
         }
-
+        
         .info-title::after {
             content: "";
             position: absolute;
@@ -406,7 +394,7 @@
             height: 2px;
             background: linear-gradient(90deg, var(--lavender-primary), var(--accent-pink));
         }
-
+        
         .info-section .info-box {
             background: var(--lavender-bg);
             border-radius: 12px;
@@ -415,42 +403,42 @@
             border: 1px solid var(--lavender-light);
             transition: all 0.3s ease;
         }
-
+        
         .info-section .info-box:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(177, 177, 232, 0.15);
         }
-
+        
         .info-box-header {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-bottom: 15px;
         }
-
+        
         .info-box-icon {
             font-size: 1.8rem;
             transition: transform 0.3s ease;
         }
-
+        
         .info-box:hover .info-box-icon {
             transform: scale(1.1);
         }
-
+        
         .info-box-title {
             font-family: 'Lora', serif;
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--lavender-dark);
         }
-
+        
         .contact-links {
             display: flex;
             gap: 15px;
             margin-top: 20px;
             flex-wrap: wrap;
         }
-
+        
         .contact-link-info {
             color: var(--white);
             text-decoration: none;
@@ -464,13 +452,13 @@
             border-radius: 8px;
             border: 2px solid transparent;
         }
-
+        
         .contact-link-info:hover {
             background: var(--lavender-dark);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(177, 177, 232, 0.3);
         }
-
+        
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -479,7 +467,7 @@
             border-top: 1px solid var(--lavender-light);
             margin-top: 40px;
         }
-
+        
         .footer-brand {
             font-family: 'Lora', serif;
             font-size: 2rem;
@@ -487,13 +475,13 @@
             margin-bottom: 10px;
             letter-spacing: 1px;
         }
-
+        
         .footer-subtitle {
             color: var(--lavender-dark);
             font-weight: 500;
             margin-bottom: 20px;
         }
-
+        
         .working-hours {
             background: rgba(177, 177, 232, 0.1);
             border-radius: 10px;
@@ -504,7 +492,7 @@
             color: var(--lavender-dark);
             font-weight: 500;
         }
-
+        
         .contacts {
             display: flex;
             justify-content: center;
@@ -512,7 +500,7 @@
             margin: 20px 0;
             flex-wrap: wrap;
         }
-
+        
         .contact-link {
             display: flex;
             align-items: center;
@@ -522,12 +510,12 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
-
+        
         .contact-link:hover {
             color: var(--lavender-primary);
             transform: translateY(-2px);
         }
-
+        
         @media print {
             .progress-container, .menu-nav, .scroll-top-btn {
                 display: none !important;
@@ -546,7 +534,7 @@
                 box-shadow: none !important;
             }
         }
-
+        
         @media (max-width: 768px) {
             body {
                 padding: 15px;
@@ -588,10 +576,6 @@
             .product-card {
                 padding: 18px;
                 min-height: auto;
-            }
-            .product-img {
-                width: calc(100% + 36px);
-                margin: -18px -18px 16px -18px;
             }
             .product-name {
                 font-size: 1.3rem;
@@ -636,7 +620,7 @@
                 transform: none;
             }
         }
-
+        
         @media (max-width: 480px) {
             .brand-name {
                 font-size: 2.5rem;
@@ -681,7 +665,7 @@
                 font-size: 1.2rem;
             }
         }
-
+        
         @media (max-width: 360px) {
             .brand-name {
                 font-size: 2.2rem;
@@ -700,31 +684,30 @@
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
-
+    
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Вернуться наверх">↑</button>
-
+    
     <header class="header">
         <h1 class="brand-name">MOONY</h1>
         <div class="subtitle">NEW YORK STYLE COOKIES</div>
     </header>
-
+    
     <div class="menu-nav-container" id="menuNavContainer">
         <nav class="menu-nav" id="stickyNav">
             <button class="active" onclick="showSection('cookies')"><span>🍪</span> Печенье</button>
-            <button onclick="showSection('cinnamon')"><span>🌀</span> Синабоны</button>
+            <button onclick="showSection('croissants')"><span>🥐</span> Крукки</button>
             <button onclick="showSection('delivery')"><span>🚀</span> Доставка</button>
             <button onclick="showSection('loyalty')"><span>🎁</span> Системы лояльности</button>
             <button onclick="showSection('info')"><span>ℹ️</span> О MOONY</button>
         </nav>
     </div>
-
+    
     <!-- Секция печенья -->
     <section id="cookies" class="menu-section active">
-        <h2 class="section-title">11 вкусов New York Style печенья</h2>
-
+        <h2 class="section-title">12 вкусов New York Style печенья</h2>
+        
         <div class="products-container">
             <div class="product-card">
-                <img class="product-img" src="images/krasny-barhat.jpg" alt="Красный бархат" onerror="this.style.display='none'">
                 <h3 class="product-name">Красный бархат</h3>
                 <p class="product-desc">Внебрачный сын чизкейка и охотник за твоим сердцем! Кремчиз, белый шоколад и балдежное нежное тесто.</p>
                 <div class="product-details">
@@ -732,9 +715,8 @@
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
-
+            
             <div class="product-card">
-                <img class="product-img" src="images/kinder.jpg" alt="Киндер" onerror="this.style.display='none'">
                 <h3 class="product-name">Киндер</h3>
                 <p class="product-desc">Создано по мотивам самой нежной шоколадки. Румяная хрустящая корочка снаружи. Тесто обволакивает оригинальную шоколадку Kinder, вместе с молочным и белым шоколадом.</p>
                 <div class="product-details">
@@ -742,19 +724,8 @@
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
-
+            
             <div class="product-card">
-                <img class="product-img" src="images/hani-joy.jpg" alt="Хани Джой" onerror="this.style.display='none'">
-                <h3 class="product-name">Хани Джой</h3>
-                <p class="product-desc">Хрустящие кукурузные хлопья, карамелизованные в мёде, и нежный молочный и белый шоколад в тесте и сердцевине. Незабываемо хрустящее печенье! Как самый завтрак из детства — хлопья с молоком, только теперь спрятанный в печенье!</p>
-                <div class="product-details">
-                    <span class="product-weight">120 гр</span>
-                    <span class="product-price-small">270 ₽</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img class="product-img" src="images/kinder-bueno.jpg" alt="Киндер Буэно" onerror="this.style.display='none'">
                 <h3 class="product-name">Киндер Буэно</h3>
                 <p class="product-desc">Сливочная молочно-ореховая начинка, точь-в-точь как в хрустящих палочках Киндер Буэно! Печенье наполнено молочным и белым шоколадом и украшено любимой вафлей Буэно.</p>
                 <div class="product-details">
@@ -762,19 +733,8 @@
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
-
+            
             <div class="product-card">
-                <img class="product-img" src="images/tykvennaya.jpg" alt="Тыквенная пряность" onerror="this.style.display='none'">
-                <h3 class="product-name">Тыквенная пряность</h3>
-                <p class="product-desc">Мягкое печенье на тёплых специях — корица, имбирь, мускат, — а внутри карамельный пекан, тающий белый шоколад и нежный крем-чиз. Всё лучшее из пампкин-спайс латте — в любимом печенье.</p>
-                <div class="product-details">
-                    <span class="product-weight">120 гр</span>
-                    <span class="product-price-small">270 ₽</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img class="product-img" src="images/twix.jpg" alt="Твикс" onerror="this.style.display='none'">
                 <h3 class="product-name">Твикс</h3>
                 <p class="product-desc">Две палочки Twix, как реклама предрекла... Нежная нуга и неповторимый карамельный вкус скрывают хрустящую начинку. Аккуратный баланс сладости и фирменной текстуры.</p>
                 <div class="product-details">
@@ -782,9 +742,35 @@
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
-
+            
             <div class="product-card">
-                <img class="product-img" src="images/morkovny.jpg" alt="Морковный Торт" onerror="this.style.display='none'">
+                <h3 class="product-name">Ягодный йогурт</h3>
+                <p class="product-desc">Терпкая, сливочно-нежная начинка из свежих лесных ягод. Вкус нежного йогурта и текстура перетёртых ягод. Каждый укус — как ложка свежего десерта.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <h3 class="product-name">M&M's</h3>
+                <p class="product-desc">Вы точно не хотите это упустить! Тесто пестрит шоколадными и арахисовыми конфетами, хрустящая текстура встречается с молочными драже. Лучшее из двух миров в неповторимом тесте!</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <h3 class="product-name">Малина Кешью</h3>
+                <p class="product-desc">Цельная малина в каждом укусе! Яркая сочная ягода в дуете с запечённым сливочным кешью. Белый шоколад объединяет пару в хрустящем тесте.</p>
+                <div class="product-details">
+                    <span class="product-weight">120 гр</span>
+                    <span class="product-price-small">270 ₽</span>
+                </div>
+            </div>
+            
+            <div class="product-card">
                 <h3 class="product-name">Морковный Торт</h3>
                 <p class="product-desc">Ароматное хрустящее печенье с мягкой сердцевиной из кремчиза, наполненное белым шоколадом и обжаренным грецким орехом и конечно самой сладкой морковкой. Печенье с самой невероятной текстурой!</p>
                 <div class="product-details">
@@ -792,9 +778,8 @@
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
-
+            
             <div class="product-card">
-                <img class="product-img" src="images/nutella.jpg" alt="Нутелла" onerror="this.style.display='none'">
                 <h3 class="product-name">Нутелла</h3>
                 <p class="product-desc">Хрустящее снаружи и очень нежное, тягучее внутри. Шоколадные капли и печенье полное начинки из оригинальной пасты Nutella.</p>
                 <div class="product-details">
@@ -802,9 +787,8 @@
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
-
+            
             <div class="product-card">
-                <img class="product-img" src="images/nutella-chocolate.jpg" alt="Нутелла Шоколад" onerror="this.style.display='none'">
                 <h3 class="product-name">Нутелла Шоколад</h3>
                 <p class="product-desc">Наше фирменное балдежное тесто с мягким вкусом шоколада, рубленый ароматный запечённый фундук и молочный шоколад. Ах да, для тех, кому не хватило — растекающаяся сердцевина из пасты Nutella.</p>
                 <div class="product-details">
@@ -812,9 +796,8 @@
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
-
+            
             <div class="product-card">
-                <img class="product-img" src="images/dubai.jpg" alt="Дубайский Шоколад" onerror="this.style.display='none'">
                 <h3 class="product-name">Дубайский Шоколад</h3>
                 <p class="product-desc">Хрустящее обжаренное тесто катаифи обваливает 100% фисташковая паста в дуэте с капелькой тахини, чтобы воспроизвести тот самый, известный на весь мир, вкус начинки Дубайского шоколада. И всё это — в нежнейшем шоколадном тесте с вкраплениями молочного шоколада.</p>
                 <div class="product-details">
@@ -822,9 +805,8 @@
                     <span class="product-price-small">270 ₽</span>
                 </div>
             </div>
-
+            
             <div class="product-card">
-                <img class="product-img" src="images/cookies-cream.jpg" alt="Кукис Энд Крим" onerror="this.style.display='none'">
                 <h3 class="product-name">Кукис Энд Крим</h3>
                 <p class="product-desc">База из мягкого теста с незабываемым вкусом Oreo нежно хрустит, обнажая щедро разлитую начинку из белого шоколада.</p>
                 <div class="product-details">
@@ -834,36 +816,21 @@
             </div>
         </div>
     </section>
-
-    <!-- Секция Синабоны -->
-    <section id="cinnamon" class="menu-section">
-        <h2 class="section-title">🌀 Синабоны</h2>
-
+    
+    <!-- Секция Крукки -->
+    <section id="croissants" class="menu-section">
+        <h2 class="section-title">🥐 Крукки</h2>
+        
+        <div class="info-box">
+            <div class="info-box-content">
+                Крукки — это гибрид круассана и печенья. Дважды запекаемый сливочный круассан приобретает невероятно хрустящую текстуру, скрывая внутри начинку — то самое печенье MOONY с нежным молочным шоколадом и щедрой прослойкой любимой с детства пасты Нутелла.
+            </div>
+        </div>
+        
         <div class="products-container">
             <div class="product-card">
-                <img class="product-img" src="images/sinabon-koritsa.jpg" alt="Корица Синабон" onerror="this.style.display='none'">
-                <h3 class="product-name">Корица Синабон</h3>
-                <p class="product-desc">Самый нежный и сочный синабон! В каждом завитке щедрая прослойка из сливочного масла, молотой корицы и тростникового сахара. Начинка проникает в каждый слой теста, пропитывая его и дарит тот самый незабываемый вкус и аромат классического синабона. Сверху мягкая глазурь из кремчиза, которая дополняет пряность сливочной свежестью.</p>
-                <div class="product-details">
-                    <span class="product-weight">120 гр</span>
-                    <span class="product-price-small">370 ₽</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img class="product-img" src="images/sinabon-nutella.jpg" alt="Нутелла Синабон" onerror="this.style.display='none'">
-                <h3 class="product-name">Нутелла Синабон</h3>
-                <p class="product-desc">Мягкая булочка-бриош, пропитанная нутеллой в каждом слое, с обжаренным фундуком для контраста и хруста. А сверху — щедрый слой нутеллы, чтобы шоколадно-ореховый вкус тянулся от первого укуса до последнего.</p>
-                <div class="product-details">
-                    <span class="product-weight">120 гр</span>
-                    <span class="product-price-small">370 ₽</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img class="product-img" src="images/sinabon-dubai.jpg" alt="Дубайский Синабон" onerror="this.style.display='none'">
-                <h3 class="product-name">Дубайский Синабон</h3>
-                <p class="product-desc">Шоколадное тесто окутывает нежную фисташковую пасту, тахини и кусочки молочного шоколада. Снаружи — дубайская начинка с хрустящим катаифи, который слышно с первого укуса. Тот самый дубайский шоколад, только в форме синабона.</p>
+                <h3 class="product-name">Крукки Нутелла</h3>
+                <p class="product-desc">Воздушный сливочный круассан, фирменное печенье с молочным шоколадом внутри и снаружи круассана! А также щедрая прослойка любимой с детства пасты Нутелла.</p>
                 <div class="product-details">
                     <span class="product-weight">120 гр</span>
                     <span class="product-price-small">370 ₽</span>
@@ -871,11 +838,11 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Секция доставки -->
     <section id="delivery" class="menu-section">
         <h2 class="section-title">🚀 Доставка MOONY</h2>
-
+        
         <div class="info-box">
             <div class="info-box-content">
                 <p style="font-size: 1.05rem; line-height: 1.7;">
@@ -883,12 +850,12 @@
                 </p>
             </div>
         </div>
-
+        
         <div class="products-container" style="grid-template-columns: 1fr 1fr;">
             <div class="product-card" style="text-align: center;">
                 <div style="font-size: 2rem; margin-bottom: 10px;">🚚</div>
                 <h3 style="font-family: 'Lora', serif; font-size: 1.3rem; color: var(--lavender-dark);">Доставка</h3>
-                <p style="font-size: 0.95rem; color: var(--text-light);">от 6 штук (Печенье, Синабоны или вместе)</p>
+                <p style="font-size: 0.95rem; color: var(--text-light);">от 6 штук (Печенье, Крукки или вместе)</p>
             </div>
             <div class="product-card" style="text-align: center;">
                 <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
@@ -896,7 +863,7 @@
                 <p style="font-size: 0.95rem; color: var(--text-light);">ТЦ «Гринвич», 0 уровень, у Гипермаркета<br>Ежедневно 10:00–22:00</p>
             </div>
         </div>
-
+        
         <div class="info-box" style="margin-top: 20px;">
             <div class="info-box-content">
                 <!-- Доставка -->
@@ -913,18 +880,18 @@
                 <p style="margin-bottom: 12px; color: var(--text-light);">
                     Мы соберём заказ, подогреем и отправим от двери до двери.
                 </p>
-
+                
                 <!-- Блок о лояльности - внутри доставки -->
                 <div style="background: var(--lavender-bg); border-radius: 12px; padding: 14px; margin-bottom: 20px; border: 1px solid var(--lavender-light);">
                     <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 4px;">🎁 По нашей системе лояльности вы также можете выбрать ЛЮБОЙ 7-й вкус в подарок! 🍪</p>
                 </div>
-
+                
                 <!-- Самовывоз -->
                 <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">📍 Как забрать самовывозом:</p>
                 <p style="margin-bottom: 12px; color: var(--text-light);">
                     Напишите нам в Telegram или Instagram — сделайте предзаказ на любое количество печенья. Мы соберём заказ к вашему приходу и упакуем. Просто напишите, когда планируете подъехать 🚀
                 </p>
-
+                
                 <!-- Ссылки -->
                 <p style="font-weight: 600; font-size: 1rem; margin-top: 12px; margin-bottom: 12px;">Связаться с нами:</p>
                 <div class="contact-links" style="justify-content: center; margin-top: 10px;">
@@ -938,11 +905,11 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Системы лояльности -->
     <section id="loyalty" class="menu-section loyalty-section">
         <h2 class="section-title">Системы лояльности</h2>
-
+        
         <div class="loyalty-card">
             <h3 class="loyalty-title"><span>🏆</span> Собери свой район</h3>
             <div class="loyalty-price">6 штампов = подарок</div>
@@ -951,13 +918,13 @@
                 <strong>Как получить:</strong> Просто попросите карту лояльности при покупке.
             </div>
         </div>
-
+        
         <div class="loyalty-card">
             <h3 class="loyalty-title"><span>✨</span> Система "5+1"</h3>
             <div class="loyalty-price">от 5шт печенья = +1 в подарок</div>
-            <p class="loyalty-desc">Купите от 5шт печенья и получите ещё одно в подарок — ЛЮБОЙ из 11 вкусов на ваш выбор!</p>
+            <p class="loyalty-desc">Купите от 5шт печенья и получите ещё одно в подарок — ЛЮБОЙ из 12 вкусов на ваш выбор!</p>
         </div>
-
+        
         <div class="loyalty-card">
             <h3 class="loyalty-title"><span>📱</span> Выложи в соцсети — выиграй коробку!</h3>
             <div class="loyalty-price">Каждое воскресенье — 2 победителя</div>
@@ -967,11 +934,11 @@
             </div>
         </div>
     </section>
-
+    
     <!-- О MOONY -->
     <section id="info" class="menu-section info-section">
         <h2 class="info-title">О MOONY</h2>
-
+        
         <div class="info-box">
             <div class="info-box-header">
                 <div class="info-box-icon">🗽</div>
@@ -981,7 +948,7 @@
                 Нью-Йорк стайл печенье — это огромное, пышное печенье с хрустящим краем и нежной серединкой, щедро начинённое кусками шоколада и орехами. Его канон задала пекарня Levain в Нью-Йорке, и навсегда наделила такой вид печенья культовым статусом.
             </div>
         </div>
-
+        
         <div class="info-box">
             <div class="info-box-header">
                 <div class="info-box-icon">🍪</div>
@@ -991,7 +958,7 @@
                 Мы берём хорошую идею и доводим до идеала. Рецепт нашего печенья простой, самое главное — хорошие ингредиенты, качественное масло, отборные свежие орехи, щедрые порции шоколада. Делаем честно, просто, с душой.
             </div>
         </div>
-
+        
         <div class="info-box">
             <div class="info-box-header">
                 <div class="info-box-icon">❤️</div>
@@ -1003,7 +970,7 @@
                 Я не могу физически быть всегда рядом с Вами, но могу быть на связи. Поэтому вы всегда можете связаться со мной — пишите в телеграмм или на почту. Эти сообщения прочитаю и отвечу именно я.
                 <br><br>
                 Если у Вас есть классные идеи вкусов, обратная связь по сервису или конструктивная критика — пишите. Вы — то, ради чего всё затевалось!
-
+                
                 <div class="contact-links">
                     <a href="https://t.me/moony_thecookie" class="contact-link-info" target="_blank">
                         <span>📱</span> Telegram: moony_thecookie
@@ -1015,15 +982,15 @@
             </div>
         </div>
     </section>
-
+    
     <footer class="footer">
         <div class="footer-brand">MOONY</div>
         <div class="footer-subtitle">NEW YORK STYLE COOKIES</div>
-
+        
         <div class="working-hours">
             🕒 <strong>Часы работы:</strong> Ежедневно с 10:00 до 22:00
         </div>
-
+        
         <div class="contacts">
             <a href="https://t.me/moony_thecookie" class="contact-link" target="_blank">
                 <span>📱</span> Telegram: moony_thecookie
@@ -1035,7 +1002,7 @@
                 <span>🎵</span> TikTok: @moony_thecookie
             </a>
         </div>
-
+        
         <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">
             Торговый центр Гринвич | 0 уровень | У Гипермаркета
         </p>
@@ -1062,7 +1029,7 @@
                 hideNavOnScroll();
             }, 2000);
         }
-
+        
         function updateScrollProgress() {
             const progressBar = document.getElementById('progressBar');
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1072,10 +1039,10 @@
                 progressBar.style.width = scrollPercent + '%';
             }
         }
-
+        
         let lastScrollTop = 0;
         let isNavVisible = true;
-
+        
         function handleScroll() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const navContainer = document.getElementById('menuNavContainer');
@@ -1094,7 +1061,7 @@
             toggleScrollTopButton();
             updateScrollProgress();
         }
-
+        
         function hideNavOnScroll() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const navContainer = document.getElementById('menuNavContainer');
@@ -1103,7 +1070,7 @@
                 isNavVisible = false;
             }
         }
-
+        
         function toggleScrollTopButton() {
             const scrollTopBtn = document.getElementById('scrollTopBtn');
             if (window.scrollY > 300) {
@@ -1112,7 +1079,7 @@
                 scrollTopBtn.classList.remove('visible');
             }
         }
-
+        
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
@@ -1122,7 +1089,7 @@
             navContainer.classList.remove('hidden');
             isNavVisible = true;
         }
-
+        
         document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('scroll', handleScroll);
             window.addEventListener('scroll', updateScrollProgress);
